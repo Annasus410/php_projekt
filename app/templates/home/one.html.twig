@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Ogłoszenie.pl
+{% endblock %}
+
+{% block body %}
+    <h1>Ogłoszenie/h1>
+
+
+
+    {% if item is defined and item|length %}
+        <dl>
+            <dt>Title</dt>
+            <dd>{{ item.Title }}</dd>
+            <dt>Content</dt>
+            <dd>{{ item.Content }}</dd>
+        </dl>
+    {% else %}
+        <p>
+            Item not found.
+        </p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Dodaj nowe ogłoszenie!'|trans }}
+{% endblock %}
+
+{% block body %}
+
+
+    {{ form_start(form, { method: 'POST', action: url('announcement_new') }) }}
+    {{ form_widget(form) }}
+    <div class="form-group row float-sm-right">
+        <input type="submit" value="{{ 'action.save'|trans }}" class="btn btn-primary" />
+    </div>
+    <div class="form-group row float-sm-left">
+        <a class="btn btn-primary" href="{{ url('announcement_new') }}" role="button">
+            {{ 'Powrót do listy'|trans }}
+        </a>
+
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ogłoszenia.pl{% endblock %}
+
+{% block body %}
+
+    <a class="btn btn-primary" href="{{ url('announcement_new') }}" role="button">Dodaj ogłoszenie</a>
+
+<div>
+
+    <table class="table">
+        <thead class="thead-light">
+
+                <tr>
+
+                    <th scope="col">Tytuł</th>
+                    <th scope="col">Treść Ogłoszenia</th>
+                </tr>
+        </thead>
+        {% for item in announcements %}
+               <tr>
+
+                   <a href="{{ url('one_announcement') }}" > <td>{{ item.title }}</td></a>
+                    <td>{{ item.content }}</td>
+{#                    <td>{{ item.accepted}}</td>#}
+                </tr>
+
+        <tbody>
+            {%  endfor %}
+        </table>
+          
+    </div>
+{% endblock %}
+
