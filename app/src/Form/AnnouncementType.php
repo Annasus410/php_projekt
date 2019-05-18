@@ -51,15 +51,15 @@ class AnnouncementType extends AbstractType
             ]
         );
 
-        $builder->add('CategoryId', EntityType::class, [
+        $builder->add('category', EntityType::class, [
             'label' => 'Kategoria',
             'class' => Category::class,
 
             'choice_label' => 'CategoryName',
 
-            'choice_value' => function (Category $entity = null) {
-                return $entity ? $entity->getId() : '';
-            }
+//            'choice_value' => function (Category $entity = null) {
+//                return $entity ? $entity : '';
+           //
 
 
         ]);

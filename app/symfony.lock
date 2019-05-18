@@ -389,6 +389,9 @@
             "templates/base.html.twig"
         ]
     },
+    "symfony/validator": {
+        "version": "v3.4.27"
+    },
     "symfony/var-dumper": {
         "version": "v3.4.26"
     },

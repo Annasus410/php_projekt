@@ -98,6 +98,7 @@
       <path value="$PROJECT_DIR$/app/vendor/stof/doctrine-extensions-bundle" />
       <path value="$PROJECT_DIR$/app/vendor/behat/transliterator" />
       <path value="$PROJECT_DIR$/app/vendor/gedmo/doctrine-extensions" />
+      <path value="$PROJECT_DIR$/app/vendor/symfony/validator" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

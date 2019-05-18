@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,7 +17,6 @@ class Announcement
      * @ORM\Column(type="integer")
      */
     private $id;
-
 
 
     /**
@@ -43,10 +44,31 @@ class Announcement
      */
     private $UserID;
 
+
+
+
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\OneToMany(targetEntity="App\Entity\Comment", mappedBy="announcement", orphanRemoval=true)
      */
-    private $CategoryId;
+    private $comments;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="announcements")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $categories;
+
+
+
+
+
+    public function __construct()
+
+    {
+        $this->User = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+
+    }
 
     public function getId(): ?int
     {
@@ -113,21 +135,99 @@ class Announcement
         return $this;
     }
 
-    public function getCategoryId(): ?int
-    {
-        return $this->CategoryId;
-    }
 
     public function setCategoryId($CategoryId): self
     {
-        if($CategoryId instanceof Category) {
+        if ($CategoryId instanceof Category) {
             $this->CategoryId = $CategoryId->getId();
         }
 
-        if(is_numeric($CategoryId)){
+        if (is_numeric($CategoryId)) {
             $this->CategoryId = $CategoryId;
         }
 
         return $this;
     }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->setAnnouncementID($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+            // set the owning side to null (unless already changed)
+            if ($category->getAnnouncementID() === $this) {
+                $category->setAnnouncementID(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Comment[]
+     */
+    public function getComments(): Collection
+    {
+        return $this->comments;
+    }
+
+    public function addComment(Comment $comment): self
+    {
+        if (!$this->comments->contains($comment)) {
+            $this->comments[] = $comment;
+            $comment->setAnnouncement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeComment(Comment $comment): self
+    {
+        if ($this->comments->contains($comment)) {
+            $this->comments->removeElement($comment);
+            // set the owning side to null (unless already changed)
+            if ($comment->getAnnouncement() === $this) {
+                $comment->setAnnouncement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function setCategories(?Category $categories): self
+    {
+        $this->categories = $categories;
+
+        return $this;
+    }
+
 }

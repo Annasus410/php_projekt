@@ -77,6 +77,7 @@
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/translation" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/twig-bridge" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/twig-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/validator" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/var-dumper" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/web-profiler-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/app/vendor/symfony/web-server-bundle" />

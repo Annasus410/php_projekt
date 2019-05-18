@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,20 @@ class Category
      */
     private $CategoryName;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Announcement", mappedBy="categories")
+     */
+    private $announcements;
+
+
+
+
+
+    public function __construct()
+    {
+        $this->announcements = new ArrayCollection();
+    }
+
 
 
     public function getId(): ?int
@@ -39,6 +55,38 @@ class Category
 
         return $this;
     }
+
+    /**
+     * @return Collection|Announcement[]
+     */
+    public function getAnnouncements(): Collection
+    {
+        return $this->announcements;
+    }
+
+    public function addAnnouncement(Announcement $announcement): self
+    {
+        if (!$this->announcements->contains($announcement)) {
+            $this->announcements[] = $announcement;
+            $announcement->setCategories($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAnnouncement(Announcement $announcement): self
+    {
+        if ($this->announcements->contains($announcement)) {
+            $this->announcements->removeElement($announcement);
+            // set the owning side to null (unless already changed)
+            if ($announcement->getCategories() === $this) {
+                $announcement->setCategories(null);
+            }
+        }
+
+        return $this;
+    }
+
 
 
 }

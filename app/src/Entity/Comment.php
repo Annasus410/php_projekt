@@ -31,6 +31,12 @@ class Comment
      */
     private $UserId;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Announcement", inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $announcement;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -71,4 +77,17 @@ class Comment
 
         return $this;
     }
+
+    public function getAnnouncement(): ?Announcement
+    {
+        return $this->announcement;
+    }
+
+    public function setAnnouncement(?Announcement $announcement): self
+    {
+        $this->announcement = $announcement;
+
+        return $this;
+    }
+
 }

@@ -43,6 +43,7 @@ class AddAnnouncementController extends Controller
             $announcement->setUserID(1); // todo: Zmienić po stworzeniu zalogowania
             $announcement->setAccepted(false);
 //            //$announcement->setCategoryId(1);
+
             $repository->save($announcement);
 
             $this->addFlash('success', 'Ogłoszenie dodano prawidłowo');

@@ -14,14 +14,24 @@
 
                     <th scope="col">Tytuł</th>
                     <th scope="col">Treść Ogłoszenia</th>
+                    <th scope="col">Kategotia</th>
+                    <th scope="col">Pokaż ogłoszenie</th>
                 </tr>
         </thead>
         {% for item in announcements %}
                <tr>
 
-                   <a href="{{ url('one_announcement') }}" > <td>{{ item.title }}</td></a>
+                   <td>{{ item.title }}</td></a>
                     <td>{{ item.content }}</td>
+                    <td> </td>
 {#                    <td>{{ item.accepted}}</td>#}
+
+                   <td>
+                       <a href="{{ url('one_announcement', {id:item.id}) }}" title="{{ 'action.view'|trans }}">
+                           {{ 'Pokaż'|trans }}
+                       </a>
+                   </td>
+
                 </tr>
 
         <tbody>

@@ -5,7 +5,7 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Task;
+use App\Entity\Announcement;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
@@ -40,10 +40,11 @@ class TaskFixtures extends Fixture
         $this->manager = $manager;
 
         for ($i = 0; $i < 10; ++$i) {
-            $task = new Task();
+            $task = new Announcement();
             $task->setTitle($this->faker->sentence);
+            $task->setContent($this->faker->sentence);
             $task->setCreatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
-            $task->setUpdatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
+//            $task->setCategory($this->faker->integer(0,4));
             $this->manager->persist($task);
         }
 
