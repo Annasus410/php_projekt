@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Announcement;
+use App\Entity\User;
 use App\Form\AnnouncementType;
 use App\Repository\AnnouncementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -40,7 +41,8 @@ class AddAnnouncementController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $announcement->setCreatedAt(new \DateTime());
-            $announcement->setUserID(1); // todo: Zmienić po stworzeniu zalogowania
+            $currentUser=$this->getDoctrine()->getRepository(User::class)->find(1);
+            $announcement->setUser( $currentUser); // todo: Zmienić po stworzeniu zalogowania
             $announcement->setAccepted(false);
 //            //$announcement->setCategoryId(1);
 

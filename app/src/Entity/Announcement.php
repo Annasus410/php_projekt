@@ -39,10 +39,8 @@ class Announcement
      */
     private $Accepted;
 
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $UserID;
+
+
 
 
 
@@ -58,6 +56,12 @@ class Announcement
      */
     private $categories;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="announcements")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $User;
+
 
 
 
@@ -67,6 +71,7 @@ class Announcement
     {
         $this->User = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->categories = new ArrayCollection();
 
     }
 
@@ -123,14 +128,15 @@ class Announcement
         return $this;
     }
 
-    public function getUserID(): ?int
+    public function getUser()
+
     {
-        return $this->UserID;
+        return $this->User;
     }
 
-    public function setUserID(?int $UserID): self
+    public function setUser($User): self
     {
-        $this->UserID = $UserID;
+        $this->User = $User;
 
         return $this;
     }
@@ -151,7 +157,7 @@ class Announcement
 
     public function getCategory(): ?Category
     {
-        return $this->category;
+        return $this->categories;
     }
 
     public function setCategory(?Category $category): self

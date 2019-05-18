@@ -51,7 +51,7 @@ class AnnouncementType extends AbstractType
             ]
         );
 
-        $builder->add('category', EntityType::class, [
+        $builder->add('categories', EntityType::class, [
             'label' => 'Kategoria',
             'class' => Category::class,
 
