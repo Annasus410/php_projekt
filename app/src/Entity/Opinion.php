@@ -16,15 +16,7 @@ class Opinion
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $UserId;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $AnnouncementId;
 
     /**
      * @ORM\Column(type="blob")
@@ -36,33 +28,15 @@ class Opinion
      */
     private $CreatedAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="opinions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Author;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getUserId(): ?int
-    {
-        return $this->UserId;
-    }
-
-    public function setUserId(int $UserId): self
-    {
-        $this->UserId = $UserId;
-
-        return $this;
-    }
-
-    public function getAnnouncementId(): ?int
-    {
-        return $this->AnnouncementId;
-    }
-
-    public function setAnnouncementId(int $AnnouncementId): self
-    {
-        $this->AnnouncementId = $AnnouncementId;
-
-        return $this;
     }
 
     public function getContent()
@@ -85,6 +59,18 @@ class Opinion
     public function setCreatedAt(\DateTimeInterface $CreatedAt): self
     {
         $this->CreatedAt = $CreatedAt;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->Author;
+    }
+
+    public function setAuthor(?User $Author): self
+    {
+        $this->Author = $Author;
 
         return $this;
     }

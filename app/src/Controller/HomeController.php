@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Announcement;
 use App\Repository\AnnouncementRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,6 +51,7 @@ class HomeController extends Controller
 //
 //        die();
 
+        /** @var Announcement $item */
         $item=$announcementRepository->findById($id);
         if(count($item))
         {
