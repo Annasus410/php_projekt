@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Ogłoszenie.pl
+{% endblock %}
+
+{% block body %}
+    <h2>Ogłoszenie</h2>
+
+    <table class="table table-sm">
+    <thead>
+
+    {% if item is defined and item|length %}
+        <tr>
+            <th scope="col"><dt>{{ item.Title }}</dt></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <dd>{{ item.Content }}</dd>
+            </td>
+        </tr>
+        </tbody>
+        </table>
+
+
+    {% else %}
+        <p>
+            Item not found.
+        </p>
+    {% endif %}
+{% endblock %}
+
+

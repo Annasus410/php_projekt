@@ -83,9 +83,15 @@ class Comment
         return $this->announcement;
     }
 
-    public function setAnnouncement(?Announcement $announcement): self
+    public function setAnnouncement( $announcement): self
     {
-        $this->announcement = $announcement;
+
+//        $this->announcement = $announcement;
+
+        if ($announcement instanceof Announcement) {
+            $this->announcement = $announcement;
+        }
+
 
         return $this;
     }

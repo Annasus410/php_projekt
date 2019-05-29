@@ -1,22 +1,22 @@
 <?php
-/**
- *Announcement type.
+/**Comment Type
  */
 
 namespace App\Form;
 
-use App\Entity\Announcement;
-use App\Entity\Category;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
+use App\Entity\Comment;
+
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class AnnouncemmentType.
+ * Class CommentType.
  */
-class AnnouncementType extends AbstractType
+class CommentType extends AbstractType
 {
     /**
      * Builds the form.
@@ -31,38 +31,29 @@ class AnnouncementType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
         $builder->add(
-            'Title',
+            'CommentContent',
             TextType::class,
             [
-                'label' => 'Tytuł ogłoszenia',
+                'label' => 'Treść komentarza',
                 'required' => true,
                 'attr' => ['max_length' => 64],
             ]
         );
 
         $builder->add(
-            'content',
-            TextType::class,
+            'announcement',
+            HiddenType::class,
             [
-                'label' => 'Treść ogłoszenia',
-                'required' => true,
-                'attr' => ['max_length' => 64],
+                'data'=>$options['id']
             ]
         );
 
-        $builder->add('categories', EntityType::class, [
-            'label' => 'Kategoria',
-            'class' => Category::class,
-
-            'choice_label' => 'CategoryName',
-
-//            'choice_value' => function (Category $entity = null) {
-//                return $entity ? $entity : '';
-           //
 
 
-        ]);
+
+
 
     }
 
@@ -73,7 +64,8 @@ class AnnouncementType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Announcement::class]);
+        $resolver->setDefaults(['data_class' => Comment::class, 'id'=>0]);
+        $resolver->addAllowedTypes('id',['int']);
     }
 
     /**
@@ -86,7 +78,7 @@ class AnnouncementType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'announcement';
+        return 'comment';
     }
 }
 
