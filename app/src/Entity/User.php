@@ -28,10 +28,7 @@ class User
      */
     private $Password;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $RoleId;
+
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Announcement", mappedBy="User", orphanRemoval=true)
@@ -42,6 +39,21 @@ class User
      * @ORM\OneToMany(targetEntity="App\Entity\Opinion", mappedBy="Author", orphanRemoval=true)
      */
     private $opinions;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Role;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\UserData", inversedBy="user", cascade={"persist", "remove"})
+     */
+    private $UserData;
+
+
+
+
+
 
     public function __construct()
     {
@@ -78,17 +90,7 @@ class User
         return $this;
     }
 
-    public function getRoleId(): ?int
-    {
-        return $this->RoleId;
-    }
 
-    public function setRoleId(int $RoleId): self
-    {
-        $this->RoleId = $RoleId;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Announcement[]
@@ -151,4 +153,30 @@ class User
 
         return $this;
     }
+
+    public function getRole(): ?string
+    {
+        return $this->Role;
+    }
+
+    public function setRole(string $Role): self
+    {
+        $this->Role = $Role;
+
+        return $this;
+    }
+
+    public function getUserData(): ?UserData
+    {
+        return $this->UserData;
+    }
+
+    public function setUserData(?UserData $UserData): self
+    {
+        $this->UserData = $UserData;
+
+        return $this;
+    }
+
+
 }

@@ -16,10 +16,7 @@ class UserData
      */
     private $id;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $UserId;
+
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -46,22 +43,23 @@ class UserData
      */
     private $City;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", mappedBy="UserData", cascade={"persist", "remove"})
+     */
+    private $user;
+
+
+
+
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserId(): ?int
-    {
-        return $this->UserId;
-    }
 
-    public function setUserId(int $UserId): self
-    {
-        $this->UserId = $UserId;
 
-        return $this;
-    }
+
 
     public function getName(): ?string
     {
@@ -112,6 +110,7 @@ class UserData
     }
 
     public function getCity(): ?string
+
     {
         return $this->City;
     }
@@ -122,4 +121,27 @@ class UserData
 
         return $this;
     }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        // set (or unset) the owning side of the relation if necessary
+        $newUserData = $user === null ? null : $this;
+        if ($newUserData !== $user->getUserData()) {
+            $user->setUserData($newUserData);
+        }
+
+        return $this;
+    }
+
+
+
+
+
 }
