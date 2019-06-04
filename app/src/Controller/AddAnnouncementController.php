@@ -15,7 +15,6 @@ class AddAnnouncementController extends Controller
 {
 
 
-
     /**
      * New action.
      *
@@ -41,8 +40,8 @@ class AddAnnouncementController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $announcement->setCreatedAt(new \DateTime());
-            $currentUser=$this->getDoctrine()->getRepository(User::class)->find(1);
-            $announcement->setUser( $currentUser); // todo: Zmienić po stworzeniu zalogowania
+            $currentUser = $this->getDoctrine()->getRepository(User::class)->find(1);
+            $announcement->setUser($currentUser); // todo: Zmienić po stworzeniu zalogowania
             $announcement->setAccepted(false);
 //            //$announcement->setCategoryId(1);
 

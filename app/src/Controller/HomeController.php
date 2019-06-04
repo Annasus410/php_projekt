@@ -9,6 +9,7 @@ use App\Form\AnnouncementType;
 use App\Form\CommentType;
 use App\Repository\AnnouncementRepository;
 use App\Repository\CommentRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,16 +32,30 @@ class HomeController extends Controller
     }
 
     /**
+     * * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param \App\Repository\AnnouncementRepository      $announcementRepository Repository
+     * @param \Knp\Component\Pager\PaginatorInterface   $paginator  Paginator
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     *
      * @Route("/home/all", name="all_announcement")
      */
 
-    public function allAnnouncements(AnnouncementRepository $announcementRepository)
-    {
+    public function allAnnouncements(Request $request, AnnouncementRepository $announcementRepository, PaginatorInterface $paginator): Response
 
-        return $this->render('home/all.html.twig', [
-            'controller_name' => 'AllAnnouncement',
-            'announcements' => $announcementRepository->findAll()
-        ]);
+    {
+        $pagination = $paginator->paginate(
+            $announcementRepository->queryAll(),
+            $request->query->getInt('page', 1),
+            Announcement::NUMBER_OF_ITEMS
+        );
+
+        return $this->render(
+            'home/all.html.twig',
+            ['pagination' => $pagination]
+//            'controller_name' => 'AllAnnouncement',
+//            'announcements' => $announcementRepository->findAll()
+        );
     }
 
     /**
@@ -67,8 +82,10 @@ class HomeController extends Controller
                 'home/one.html.twig',
                 [
                     'item' => $item[0],
-                    'form' => $form->createView()
-                ]
+                    'form' => $form->createView(),
+                    'comments' => $item[0]->getComments()
+                    ]
+
             );
         }
         return $this->render(

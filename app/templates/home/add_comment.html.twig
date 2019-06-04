@@ -1,35 +1,32 @@
-{% extends 'base.html.twig' %}
+{#{% extends 'base.html.twig' %}#}
+{#{% block title %}Ogłoszenia.pl{% endblock %}#}
 
-{% block title %}
-    Ogłoszenie.pl
-{% endblock %}
+{#{% block body %}#}
 
-{% block body %}
-    <h2>Ogłoszenie</h2>
+{#    <a class="btn btn-primary" href="{{ url('announcement_new') }}" role="button">Dodaj ogłoszenie</a>#}
 
-    <table class="table table-sm">
-    <thead>
+{#    <div>#}
 
-    {% if item is defined and item|length %}
-        <tr>
-            <th scope="col"><dt>{{ item.Title }}</dt></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>
-                <dd>{{ item.Content }}</dd>
-            </td>
-        </tr>
-        </tbody>
-        </table>
+{#        <table class="table">#}
+{#            <thead class="thead-light">#}
+
+{#            <tr>#}
 
 
-    {% else %}
-        <p>
-            Item not found.
-        </p>
-    {% endif %}
-{% endblock %}
+{#                <th scope="col">Komentarz</th>#}
+{#                <#}
+{#            </tr>#}
+{#            </thead>#}
+{#            {% for item in comments%}#}
+{#            <tr>#}
 
+{#                <td>{{ item.CommentContent }}</td></a>#}
+{#            </tr>#}
+
+{#            <tbody>#}
+{#            {% endfor %}#}
+{#        </table>#}
+
+{#    </div>#}
+{#{% endblock %}#}
 

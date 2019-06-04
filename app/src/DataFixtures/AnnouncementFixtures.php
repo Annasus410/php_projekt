@@ -45,16 +45,19 @@ class AnnouncementFixtures extends Fixture
         {
 
             $announcement = new Announcement();
+            $announcement->setId($this->faker->numberBetween([0], [300]));
             $announcement->setTitle($this->faker->sentence);
             $announcement->setContent($this->faker->sentence);
             $announcement->setCreatedAt($this->faker->dateTimeBetween('-100 days', '-1 days'));
             $announcement->setAccepted($this->faker->boolean);
+            $announcement->setComments($this->faker->sentence);
+            $announcement->setCategories($this->faker->sentence());
+            $announcement->setUser($this->faker->sentence());
+            $announcement->setPhoto($this->faker->sentence());
 
             $this-> manager->persist($announcement);
         }
 
-        // $product = new Product();
-        // $manager->persist($product);
 
         $manager->flush();
     }

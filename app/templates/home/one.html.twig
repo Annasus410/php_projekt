@@ -7,47 +7,70 @@
 {% block body %}
     <h2>Ogłoszenie</h2>
 
-<table class="table table-sm">
+    <table class="table table-sm">
     <thead>
 
     {% if item is defined and item|length %}
-    <tr>
-        <th scope="col"><dt>{{ item.Title }}</dt></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>
-            <dd>{{ item.Content }}</dd>
-        </td>
-    </tr>
-    </tbody>
+        <tr>
+            <th scope="col">
+                <dt>{{ item.Title }}</dt>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <dd>{{ item.Content }}</dd>
+            </td>
+        </tr>
+        </tbody>
         </table>
         </br>
-        <a class="btn btn-primary" href="{{ url('comment_new') }}" role="button">Dodaj komentarz</a>
-
-
-
-
-
-            {{ form_start(form, { method: 'POST', action: url('comment_new') }) }}
-            {{ form_widget(form) }}
-            <div class="form-group row float-sm-right">
-                <input type="submit" value="{{ 'Dodaj komentarz'|trans }}" class="btn btn-primary" />
-            </div>
-            <div class="form-group row float-sm-left">
-                <a class="btn btn-primary" href="{{ url('all_announcement')}}" role="button">
-                    {{ 'Powrót do listy'|trans }}
-                </a>
-
-            </div>
-            {{ form_end(form) }}
-
     {% else %}
         <p>
             Item not found.
         </p>
     {% endif %}
+
+
+
+    {{ form_start(form, { method: 'POST', action: url('comment_new') }) }}
+    {{ form_widget(form) }}
+    <div class="form-group row float-sm-right">
+        <input type="submit" value="{{ 'Dodaj komentarz'|trans }}" class="btn btn-primary"/>
+    </div>
+    <div class="form-group row float-sm-left">
+        <a class="btn btn-primary" href="{{ url('all_announcement') }}" role="button">
+            {{ 'Powrót do listy'|trans }}
+        </a>
+
+    </div>
+    {{ form_end(form) }}
+    <div>
+
+        <table class="table">
+            <thead class="thead-light">
+
+            <tr>
+
+
+                <th scope="col">Komentarz</th>
+                <
+            </tr>
+            </thead>
+            {% for item in comments%}
+            <tr>
+
+                <td>{{ item.CommentContent }}</td>
+            </tr>
+
+            <tbody>
+            {% endfor %}
+        </table>
+
+    </div>
+
+
 {% endblock %}
 
 

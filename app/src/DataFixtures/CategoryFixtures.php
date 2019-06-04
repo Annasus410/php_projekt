@@ -45,7 +45,9 @@ class CategoryFixtures extends Fixture
         {
 
             $category = new Category();
+            $category->setId($this->faker->numberBetween([1],[300]));
             $category->setCategoryName($this->faker->word);
+
             $this-> manager->persist($category);
         }
 

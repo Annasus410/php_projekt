@@ -3,41 +3,60 @@
 
 {% block body %}
 
+
     <a class="btn btn-primary" href="{{ url('announcement_new') }}" role="button">Dodaj ogłoszenie</a>
 
-<div>
+    <h1>{{ 'Lista ogłoszeń'|trans }}</h1>
+    {% if pagination is defined and pagination|length %}
 
-    <table class="table">
-        <thead class="thead-light">
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'a.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'a.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'a.title') }}</th>
+                <th>{{ 'label.actions'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for announcement in pagination %}
 
                 <tr>
 
-                    <th scope="col">Tytuł</th>
-                    <th scope="col">Treść Ogłoszenia</th>
-                    <th scope="col">Kategotia</th>
-                    <th scope="col">Pokaż ogłoszenie</th>
-                </tr>
-        </thead>
-        {% for item in announcements %}
-               <tr>
-
-                   <td>{{ item.title }}</td></a>
-                    <td>{{ item.content }}</td>
+                    <td>{{ announcement.title }}</td>
+                    <td>{{ announcement.content }}</td>
                     <td> </td>
-{#                    <td>{{ item.accepted}}</td>#}
+                    {#                    <td>{{ item.accepted}}</td>#}
 
-                   <td>
-                       <a href="{{ url('one_announcement', {id:item.id}) }}" title="{{ 'action.view'|trans }}">
-                           {{ 'Pokaż'|trans }}
-                       </a>
-                   </td>
+                    <td>
+                        <a href="{{ url('one_announcement', {id:announcement.id}) }}" title="{{ 'action.view'|trans }}">
+                            {{ 'Pokaż'|trans }}
+                        </a>
+                    </td>
 
                 </tr>
-
-        <tbody>
-            {%  endfor %}
+            {% endfor %}
+            </tbody>
         </table>
-          
-    </div>
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    {% else %}
+        <p>
+            {{ 'message.empty_list'|trans }}
+        </p>
+    {% endif %}
+
 {% endblock %}
+
 

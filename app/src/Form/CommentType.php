@@ -6,7 +6,6 @@ namespace App\Form;
 
 
 use App\Entity\Comment;
-
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -38,7 +37,7 @@ class CommentType extends AbstractType
             [
                 'label' => 'Treść komentarza',
                 'required' => true,
-                'attr' => ['max_length' => 64],
+                'attr' => ['max_length' => 150],
             ]
         );
 
