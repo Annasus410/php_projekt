@@ -3,6 +3,11 @@
 {% block title %}Ogłoszenia.pl{% endblock %}
 
 {% block body %}
+    <div class="header">
+            <a class="btn btn-primary btn-lg" href="{{ url('security_login') }}" role="button">Zaloguj się</a>
+        {#    <a class="btn btn-primary btn-lg" href="home/a" role="button">Zarejestruj się</a>#}
+
+    </div>
     <style>
         .jumbotron {
             margin: 1em auto;
@@ -24,6 +29,6 @@
         <p>Witaj w miejscu gdzie znajdziesz ogłoszenia z wielu kategorii oraz dodasz swoje własne ogłoszenie!</p>
         <a class="btn btn-primary btn-lg" href="home/all" role="button">Przeglądaj ogłoszenia</a>
     </div>
-    </div>
 
+    </body>
 {% endblock %}

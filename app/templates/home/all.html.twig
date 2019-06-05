@@ -5,7 +5,9 @@
 
 
     <a class="btn btn-primary" href="{{ url('announcement_new') }}" role="button">Dodaj ogłoszenie</a>
-
+    </br>
+    <hr>
+    </br>
     <h1>{{ 'Lista ogłoszeń'|trans }}</h1>
     {% if pagination is defined and pagination|length %}
 
@@ -20,10 +22,10 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>{{ knp_pagination_sortable(pagination, 'label.id'|trans, 'a.id') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.created_at'|trans, 'a.createdAt') }}</th>
-                <th>{{ knp_pagination_sortable(pagination, 'label.title'|trans, 'a.title') }}</th>
-                <th>{{ 'label.actions'|trans }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Tytuł'|trans, 'a.id') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Treść'|trans, 'a.createdAt') }}</th>
+                <th>{{ knp_pagination_sortable(pagination, 'Kategoria'|trans, 'a.categories') }}</th>
+                <th>{{ 'Jedno ogłoszenie'|trans }}</th>
             </tr>
             </thead>
             <tbody>

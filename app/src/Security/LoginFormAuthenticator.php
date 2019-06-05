@@ -161,7 +161,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        return new RedirectResponse($this->router->generate('all_announcement'));
+        return new RedirectResponse($this->router->generate('home_all'));
     }
 
     /**
