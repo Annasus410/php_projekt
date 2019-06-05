@@ -1,58 +1,71 @@
 <?php
 /**
- *  User fixtures.
- *
+ * User fixtures.
  */
 
 namespace App\DataFixtures;
 
 use App\Entity\User;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Faker\Factory;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-
-
-
-class UserFixtures extends Fixture
-
+/**
+ * Class UserFixtures.
+ */
+class UserFixtures extends AbstractBaseFixtures
 {
     /**
-     * Faker.
+     * Password encoder.
      *
-     * @var \Faker\Generator
+     * @var \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface
      */
-    protected $faker;
+    private $passwordEncoder;
 
     /**
-     * Object manager.
+     * UserFixtures constructor.
      *
-     * @var \Doctrine\Common\Persistence\ObjectManager
+     * @param \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface $passwordEncoder Password encoder
      */
-    protected $manager;
+    public function __construct(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $this->passwordEncoder = $passwordEncoder;
+    }
 
     /**
      * Load.
      *
      * @param \Doctrine\Common\Persistence\ObjectManager $manager
      */
-    public function load(ObjectManager $manager): void
+    public function loadData(ObjectManager $manager): void
     {
-        $this->faker = Factory::create();
-        $this->manager = $manager;
-
-        for( $i = 0; $i < 10; ++$i )
-        {
-
+        $this->createMany(10, 'users', function ($i) {
             $user = new User();
-            $user->setLogin($this->faker->name);
-            $user->setPassword($this->faker->password);
-            $user->setRole($this->faker->word);
-            $this-> manager->persist($user);
-        }
+            $user->setLogin(sprintf('user%d', $i));
 
-        // $product = new Product();
+            $user->setRoles(['ROLE_USER']);
+            $user->setCreatedAt(new \DateTime());
+            $user->setUpdatedAt(new \DateTime());
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                'user1234'
+            ));
 
+            return $user;
+        });
+
+        $this->createMany(3, 'admins', function ($i) {
+            $user = new User();
+            $user->setLogin(sprintf('admin%d', $i));
+            $user->setCreatedAt(new \DateTime());
+            $user->setUpdatedAt(new \DateTime());
+            $user->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+            $user->setPassword($this->passwordEncoder->encodePassword(
+                $user,
+                'admin1234'
+            ));
+
+            return $user;
+        });
 
         $manager->flush();
     }

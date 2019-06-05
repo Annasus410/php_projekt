@@ -38,22 +38,22 @@ class CategoryFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
-        $this->faker = Factory::create();
-        $this->manager = $manager;
-
-        for( $i = 0; $i < 10; ++$i )
-        {
-
-            $category = new Category();
-            $category->setId($this->faker->numberBetween([1],[300]));
-            $category->setCategoryName($this->faker->word);
-
-            $this-> manager->persist($category);
-        }
-
-        // $product = new Product();
-        // $manager->persist($product);
-
-        $manager->flush();
+//        $this->faker = Factory::create();
+//        $this->manager = $manager;
+//
+//        for( $i = 0; $i < 10; ++$i )
+//        {
+//
+//            $category = new Category();
+//            $category->setId($this->faker->numberBetween([1],[300]));
+//            $category->setCategoryName($this->faker->word);
+//
+//            $this-> manager->persist($category);
+//        }
+//
+//        // $product = new Product();
+//        // $manager->persist($product);
+//
+//        $manager->flush();
     }
 }

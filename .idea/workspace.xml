@@ -2,31 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0029896c-317b-463b-b257-64401ae7a0fc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/config/packages/knp_paginator.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php_projekt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php_projekt.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/Security/LoginFormAuthenticator.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/security/login.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/.env" beforeDir="false" afterPath="$PROJECT_DIR$/app/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/public/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/public/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/packages/security.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/Controller/AddAnnouncementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/AddAnnouncementController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/DataFixtures/AbstractBaseFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DataFixtures/AbstractBaseFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/DataFixtures/AnnouncementFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DataFixtures/AnnouncementFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/DataFixtures/CategoryFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DataFixtures/CategoryFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/DataFixtures/PhotoFixtures.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Entity/Announcement.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/Announcement.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Form/CommentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Form/CommentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Repository/AnnouncementRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Repository/AnnouncementRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/Repository/CommentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Repository/CommentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/add_announcement/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/add_announcement/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home/add_comment.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/add_comment.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home/all.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/all.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/home/one.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/home/one.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/DataFixtures/CommentFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DataFixtures/CommentFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/DataFixtures/OpinionFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DataFixtures/OpinionFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/DataFixtures/UserDataFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DataFixtures/UserDataFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/DataFixtures/UserFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/Entity/User.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,91 +28,62 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Controller/HomeController.php">
+        <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/CommentFixtures.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="89" column="9" lean-forward="true" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+            <state relative-caret-position="432">
+              <caret line="58" column="1" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
               <folding>
-                <element signature="e#34#62#0#PHP" expanded="true" />
+                <element signature="e#6#38#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/UserFixtures.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="137">
+              <caret line="50" column="15" selection-start-line="50" selection-start-column="15" selection-end-line="50" selection-end-column="15" />
+              <folding>
+                <element signature="e#6#31#0#PHP" expanded="true" />
+                <element signature="e#62#82#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/Security/LoginFormAuthenticator.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
+              <folding>
+                <element signature="e#6#42#0#PHP" expanded="true" />
+                <element signature="e#69#89#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/Controller/SecurityController.php">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/templates/home/one.html.twig">
+        <entry file="file://$PROJECT_DIR$/app/src/Controller/AddAnnouncementController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
+            <state relative-caret-position="75">
+              <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Repository/CommentRepository.php">
+        <entry file="file://$PROJECT_DIR$/app/src/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="618">
-              <caret line="47" column="4" selection-start-line="47" selection-start-column="4" selection-end-line="47" selection-end-column="4" />
-              <folding>
-                <element signature="e#35#58#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Entity/Comment.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="958">
-              <caret line="92" column="9" selection-start-line="92" selection-start-column="9" selection-end-line="92" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/base.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/add_announcement/index.html.twig">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="14" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/public/css/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Repository/AnnouncementRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="42" selection-start-line="42" selection-end-line="42" />
-              <folding>
-                <element signature="e#34#62#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/Entity/Announcement.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="2724">
+              <caret line="260" column="31" selection-start-line="260" selection-start-column="31" selection-end-line="260" selection-end-column="31" />
               <folding>
                 <element signature="e#30#78#0#PHP" expanded="true" />
               </folding>
@@ -133,10 +92,37 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/home/all.html.twig">
+        <entry file="file://$PROJECT_DIR$/app/templates/security/login.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
+            <state relative-caret-position="585">
+              <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/services.yaml">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/AbstractBaseFixtures.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="437">
+              <caret line="134" column="1" selection-start-line="134" selection-start-column="1" selection-end-line="134" selection-end-column="1" />
+              <folding>
+                <element signature="e#6#31#0#PHP" expanded="true" />
+                <element signature="e#62#105#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/config/packages/security.yaml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -176,25 +162,16 @@
         <option value="$PROJECT_DIR$/app/src/Migrations/Version20190518203417.php" />
         <option value="$PROJECT_DIR$/app/src/Entity/Opinion.php" />
         <option value="$PROJECT_DIR$/app/src/Entity/Role.php" />
-        <option value="$PROJECT_DIR$/app/src/Entity/User.php" />
         <option value="$PROJECT_DIR$/app/src/Entity/UserData.php" />
         <option value="$PROJECT_DIR$/app/src/DataFixtures/ObjectManager.php" />
-        <option value="$PROJECT_DIR$/app/src/DataFixtures/AbstractBaseFixtures.php" />
-        <option value="$PROJECT_DIR$/app/src/DataFixtures/OpinionFixtures.php" />
-        <option value="$PROJECT_DIR$/app/src/DataFixtures/CommentFixtures.php" />
-        <option value="$PROJECT_DIR$/app/src/DataFixtures/UserFixtures.php" />
-        <option value="$PROJECT_DIR$/app/src/DataFixtures/UserDataFixtures.php" />
         <option value="$PROJECT_DIR$/app/src/DataFixtures/PhotoFixtures.php" />
         <option value="$PROJECT_DIR$/app/src/Form/AnnouncementType.php" />
         <option value="$PROJECT_DIR$/app/src/Entity/Comment.php" />
-        <option value="$PROJECT_DIR$/app/src/Controller/AddAnnouncementController.php" />
         <option value="$PROJECT_DIR$/app/templates/add_announcement/index.html.twig" />
         <option value="$PROJECT_DIR$/app/templates/home/index.html.twig" />
-        <option value="$PROJECT_DIR$/app/src/DataFixtures/AnnouncementFixtures.php" />
         <option value="$PROJECT_DIR$/app/src/Form/CommentType.php" />
         <option value="$PROJECT_DIR$/app/templates/home/add_comment.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Repository/CommentRepository.php" />
-        <option value="$PROJECT_DIR$/app/src/DataFixtures/CategoryFixtures.php" />
         <option value="$PROJECT_DIR$/app/config/packages/knp_paginator.yml" />
         <option value="$PROJECT_DIR$/app/templates/base.html.twig" />
         <option value="$PROJECT_DIR$/app/src/Repository/AnnouncementRepository.php" />
@@ -204,6 +181,19 @@
         <option value="$PROJECT_DIR$/app/public/css/styles.css" />
         <option value="$PROJECT_DIR$/app/src/Controller/HomeController.php" />
         <option value="$PROJECT_DIR$/app/templates/home/one.html.twig" />
+        <option value="$PROJECT_DIR$/app/src/Entity/User.php" />
+        <option value="$PROJECT_DIR$/app/src/DataFixtures/AnnouncementFixtures.php" />
+        <option value="$PROJECT_DIR$/app/src/DataFixtures/CategoryFixtures.php" />
+        <option value="$PROJECT_DIR$/app/src/DataFixtures/OpinionFixtures.php" />
+        <option value="$PROJECT_DIR$/app/src/DataFixtures/UserDataFixtures.php" />
+        <option value="$PROJECT_DIR$/app/src/DataFixtures/CommentFixtures.php" />
+        <option value="$PROJECT_DIR$/app/src/DataFixtures/AbstractBaseFixtures.php" />
+        <option value="$PROJECT_DIR$/app/src/DataFixtures/UserFixtures.php" />
+        <option value="$PROJECT_DIR$/app/templates/security/login.html.twig" />
+        <option value="$PROJECT_DIR$/app/config/packages/security.yaml" />
+        <option value="$PROJECT_DIR$/app/src/Controller/Security.php" />
+        <option value="$PROJECT_DIR$/app/src/Security/LoginFormAuthenticator.php" />
+        <option value="$PROJECT_DIR$/app/src/Controller/AddAnnouncementController.php" />
       </list>
     </option>
   </component>
@@ -297,10 +287,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="64" />
-    <option name="y" value="-11" />
-    <option name="width" value="921" />
-    <option name="height" value="950" />
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="919" />
+    <option name="height" value="914" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -399,6 +389,13 @@
               <item name="php_projekt" type="b2602c69:ProjectViewProjectNode" />
               <item name="php_projekt" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Security" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="php_projekt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="php_projekt" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -414,6 +411,13 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="php_projekt" type="b2602c69:ProjectViewProjectNode" />
+              <item name="php_projekt" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="security" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="php_projekt" type="b2602c69:ProjectViewProjectNode" />
@@ -506,7 +510,7 @@
       <workItem from="1559325634707" duration="9435000" />
       <workItem from="1559339231984" duration="231000" />
       <workItem from="1559643207531" duration="3133000" />
-      <workItem from="1559671714704" duration="2093000" />
+      <workItem from="1559671714704" duration="7856000" />
     </task>
     <task id="LOCAL-00001" summary="relacje: category, comment">
       <created>1558213316972</created>
@@ -543,17 +547,23 @@
       <option name="project" value="LOCAL" />
       <updated>1559158117685</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="pagination">
+      <created>1559676868163</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1559676868166</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128583000" />
+    <option name="totallyTimeSpent" value="134346000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1857" height="1092" extended-state="6" />
-    <editor active="true" />
+    <frame x="65" y="-4" width="1855" height="980" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76109934" visible="true" weight="0.18684356" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76109934" visible="true" weight="0.082365945" />
       <window_info id="Structure" order="1" sideWeight="0.23890063" side_tool="true" weight="0.15920398" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -565,8 +575,8 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32721713" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.24057084" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.39580765" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.470948" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5002764" side_tool="true" weight="0.32960325" />
       <window_info anchor="bottom" id="Messages" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -607,51 +617,10 @@
     <MESSAGE value="relacje: user" />
     <MESSAGE value="relacje Opinion" />
     <MESSAGE value="Fixtures" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixtures" />
+    <MESSAGE value="pagination" />
+    <option name="LAST_COMMIT_MESSAGE" value="pagination" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190512153444.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190512153935.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190512165021.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="34" column="41" lean-forward="true" selection-start-line="34" selection-start-column="41" selection-end-line="34" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190515181528.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190518211915.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190501132256.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Migrations/Version20190501143236.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -735,50 +704,6 @@
     <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/ObjectManager.php" />
     <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/AbstactBaseFixtures.php" />
     <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/TaskFixtures.php" />
-    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/CommentFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
-          <folding>
-            <element signature="e#6#38#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Entity/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1213">
-          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/UserFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="31" column="23" selection-end-line="59" />
-          <folding>
-            <element signature="e#6#35#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Entity/UserData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/UserDataFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="e#6#39#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Entity/Photo.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
@@ -787,37 +712,10 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/PhotoFixtures.php" />
-    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/OpinionFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="44" column="9" selection-end-line="60" />
-          <folding>
-            <element signature="e#6#38#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Entity/Opinion.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="34" column="20" selection-start-line="34" selection-start-column="20" selection-end-line="34" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/AbstractBaseFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#6#39#0#PHP" expanded="true" />
-            <element signature="e#70#113#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/AnnouncementFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="55" column="62" selection-start-line="55" selection-start-column="62" selection-end-line="55" selection-end-column="62" />
         </state>
       </provider>
     </entry>
@@ -831,16 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/Controller/AddAnnouncementController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="53" column="29" selection-start-line="53" selection-start-column="29" selection-end-line="53" selection-end-column="29" />
-          <folding>
-            <element signature="e#34#62#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/Form/CommentType.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -848,17 +736,6 @@
           <folding>
             <element signature="e#6#25#0#PHP" expanded="true" />
             <element signature="e#49#72#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/CategoryFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="12" />
-          <folding>
-            <element signature="e#6#39#0#PHP" expanded="true" />
-            <element signature="e#70#94#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -955,7 +832,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/Controller/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="449">
-          <caret line="89" column="9" lean-forward="true" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+          <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
           <folding>
             <element signature="e#34#62#0#PHP" expanded="true" />
           </folding>
@@ -981,8 +858,148 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/home/one.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="63" column="36" selection-start-line="63" selection-start-column="36" selection-end-line="63" selection-end-column="36" />
+        <state relative-caret-position="945">
+          <caret line="63" column="50" selection-start-line="63" selection-start-column="50" selection-end-line="63" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Entity/UserData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/OpinionFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="59" column="1" selection-start-line="59" selection-start-column="1" selection-end-line="59" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#38#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/UserDataFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="40" column="5" selection-start-line="40" selection-start-column="5" selection-end-line="40" selection-end-column="5" />
+          <folding>
+            <element signature="e#6#39#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/AnnouncementFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="61" column="28" selection-start-line="40" selection-start-column="10" selection-end-line="61" selection-end-column="28" />
+          <folding>
+            <element signature="e#6#43#0#PHP" expanded="true" />
+            <element signature="e#74#102#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/CategoryFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="56" column="28" selection-start-line="40" selection-start-column="10" selection-end-line="56" selection-end-column="28" />
+          <folding>
+            <element signature="e#6#39#0#PHP" expanded="true" />
+            <element signature="e#70#94#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/CommentFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="58" column="1" selection-start-line="58" selection-start-column="1" selection-end-line="58" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#38#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/AbstractBaseFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="134" column="1" selection-start-line="134" selection-start-column="1" selection-end-line="134" selection-end-column="1" />
+          <folding>
+            <element signature="e#6#31#0#PHP" expanded="true" />
+            <element signature="e#62#105#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/DataFixtures/UserFixtures.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="50" column="15" selection-start-line="50" selection-start-column="15" selection-end-line="50" selection-end-column="15" />
+          <folding>
+            <element signature="e#6#31#0#PHP" expanded="true" />
+            <element signature="e#62#82#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/services.yaml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/packages/security.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Controller/Security.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
+          <folding>
+            <element signature="e#6#37#0#PHP" expanded="true" />
+            <element signature="e#66#131#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/security/login.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Controller/SecurityController.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Security/LoginFormAuthenticator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="136" column="26" selection-start-line="136" selection-start-column="26" selection-end-line="136" selection-end-column="26" />
+          <folding>
+            <element signature="e#6#42#0#PHP" expanded="true" />
+            <element signature="e#69#89#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2724">
+          <caret line="260" column="31" selection-start-line="260" selection-start-column="31" selection-end-line="260" selection-end-column="31" />
+          <folding>
+            <element signature="e#30#78#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/Controller/AddAnnouncementController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
         </state>
       </provider>
     </entry>

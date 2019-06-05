@@ -38,22 +38,22 @@ class CommentFixtures extends Fixture
      */
     public function load(ObjectManager $manager): void
     {
-        $this->faker = Factory::create();
-        $this->manager = $manager;
-
-        for( $i = 0; $i < 10; ++$i )
-        {
-
-           $comment = new Comment();
-           $comment->setCommentContent($this->faker->sentence);
-           $comment->setCommentContent($this->faker->dateTimeBetween('-100 days', '-1 days'));
-           $this-> manager->persist($comment);
-
-        }
-
-        // $product = new Product();
-        // $manager->persist($product);
-
-        $manager->flush();
+//        $this->faker = Factory::create();
+//        $this->manager = $manager;
+//
+//        for( $i = 0; $i < 10; ++$i )
+//        {
+//
+//           $comment = new Comment();
+//           $comment->setCommentContent($this->faker->sentence);
+//           $comment->setCommentContent($this->faker->dateTimeBetween('-100 days', '-1 days'));
+//           $this-> manager->persist($comment);
+//
+//        }
+//
+//        // $product = new Product();
+//        // $manager->persist($product);
+//
+//        $manager->flush();
     }
 }

@@ -3,14 +3,32 @@
 namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
+    /**
+     * Role user.
+     *
+     * @var string
+     */
+    const ROLE_USER = 'ROLE_USER';
+
+    /**
+     * Role admin.
+     *
+     * @var string
+     */
+    const ROLE_ADMIN = 'ROLE_ADMIN';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -29,7 +47,6 @@ class User
     private $Password;
 
 
-
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Announcement", mappedBy="User", orphanRemoval=true)
      */
@@ -40,19 +57,38 @@ class User
      */
     private $opinions;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $Role;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\UserData", inversedBy="user", cascade={"persist", "remove"})
      */
     private $UserData;
 
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @Gedmo\Timestampable(on="create")
+     *
+     * @ORM\Column(type="datetime")
+     *
+     * @Assert\DateTime
+     */
+    private $createdAt;
 
+    /**
+     * @var \DateTime
+     *
+     * @Gedmo\Timestampable(on="update")
+     *
+     * @ORM\Column(type="datetime")
+     *
+     * @Assert\DateTime
+     */
+    private $updatedAt;
 
-
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $roles = [];
 
 
     public function __construct()
@@ -89,7 +125,6 @@ class User
 
         return $this;
     }
-
 
 
     /**
@@ -154,17 +189,6 @@ class User
         return $this;
     }
 
-    public function getRole(): ?string
-    {
-        return $this->Role;
-    }
-
-    public function setRole(string $Role): self
-    {
-        $this->Role = $Role;
-
-        return $this;
-    }
 
     public function getUserData(): ?UserData
     {
@@ -178,5 +202,66 @@ class User
         return $this;
     }
 
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
 
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getRoles(): ?array
+    {
+        return $this->roles;
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+    /**
+* @see UserInterface
+*/
+    public function getSalt()
+    {
+        // not needed when using bcrypt or argon
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
+    }
+    /**
+     * {@inheritdoc}
+     *
+     * @see UserInterface
+     *
+     * @return string User name
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->Login;
+    }
 }
