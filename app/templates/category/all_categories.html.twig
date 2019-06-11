@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ogłoszenia.pl{% endblock %}
+
+{% block body %}
+
+    <h1>{{ 'Lista kategorii'|trans }}</h1>
+    <a class="btn btn-primary"  href="{{ url('category_new') }}">{{ 'Dodaj kategorie' |trans }}</a>
+    </br>
+    </br>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+
+            <th>{{ 'Kategoria' }}</th>
+            <th>{{ 'Usuń' }}</th>
+            <th>{{ 'Edytuj' }}</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+
+            <tr>
+
+                <td> {{ category.categoryName }} </td>
+                <td>
+                    {% if category.getAnnouncements().count() == 0 %}
+                    <a href="{{ url('category_delete', {id:category.id}) }}" title="{{ 'action.view'|trans }}">
+                        {{ 'Usuń'|trans }}
+                    </a>
+                        {% else %}
+                        {{ 'Kategoria posiada ogłoszenia' }}
+
+                    {%  endif %}
+
+                    </td>
+                <td><a href="{{ url('category_edit', {id:category.id}) }}" title="{{ 'action.view'|trans }}">
+
+                    </a>
+                    {{ 'Edytuj'| trans }} </td>
+{% endfor %}
+        </tbody>
+    </table>
+
+{% endblock%}

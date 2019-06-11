@@ -26,16 +26,19 @@ class Comment
      */
     private $CreatedAt;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $UserId;
+
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Announcement", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $announcement;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="comment", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $User;
 
     public function getId(): ?int
     {
@@ -66,17 +69,6 @@ class Comment
         return $this;
     }
 
-    public function getUserId(): ?int
-    {
-        return $this->UserId;
-    }
-
-    public function setUserId(int $UserId): self
-    {
-        $this->UserId = $UserId;
-
-        return $this;
-    }
 
     public function getAnnouncement(): ?Announcement
     {
@@ -92,6 +84,18 @@ class Comment
             $this->announcement = $announcement;
         }
 
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->User;
+    }
+
+    public function setUser(User $User): self
+    {
+        $this->User = $User;
 
         return $this;
     }

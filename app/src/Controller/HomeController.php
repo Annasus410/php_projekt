@@ -53,8 +53,7 @@ class HomeController extends Controller
         return $this->render(
             'home/all.html.twig',
             ['pagination' => $pagination]
-//            'controller_name' => 'AllAnnouncement',
-//            'announcements' => $announcementRepository->findAll()
+
         );
     }
 
@@ -83,7 +82,8 @@ class HomeController extends Controller
                 [
                     'item' => $item[0],
                     'form' => $form->createView(),
-                    'comments' => $item[0]->getComments()
+                    'comments' => $item[0]->getComments(),
+                    'user' => $this->getUser()
                     ]
 
             );
@@ -119,7 +119,7 @@ class HomeController extends Controller
             $comment->setAnnouncement($currentAnnouncement);
 
 //            $currentUser = $this->getDoctrine()->getRepository(User::class)->find(1);
-            $comment->setUserId(1); // todo: Zmienić po stworzeniu zalogowania
+            $comment->setUser($this->getUser());
             $repository->save($comment);
 
             $this->addFlash('success', 'Komentarz dodano prawidłowo');

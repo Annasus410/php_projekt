@@ -23,6 +23,17 @@
                 <dd>{{ item.Content }}</dd>
             </td>
         </tr>
+        <td>
+            <dd>{% if user.id == item.user.id or is_granted('ROLE_ADMIN') %}
+                    <a class="btn btn-primary" href="{{ url('announcement_edit', {'id':item.id})  }}" role="button">
+                        {{ 'Edytuj'|trans }}
+                    </a>
+                    <a class="btn btn-primary" href="{{ url('announcement_delete', {'id':item.id})  }}" role="button">
+                        {{ 'Skasuj'|trans }}
+                    </a>
+                {% endif %}
+            </dd>
+        </td>
         </tbody>
         </table>
         </br>
@@ -55,13 +66,14 @@
 
 
                 <th scope="col">Komentarz</th>
-                <
+                <th scope="col">Data dodania</th>
             </tr>
             </thead>
             {% for item in comments%}
             <tr>
 
                 <td>{{ item.CommentContent }}</td>
+                <td> {{  item.createdAt|date('Y-m-d') }}</td>
             </tr>
 
             <tbody>

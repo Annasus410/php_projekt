@@ -1,12 +1,12 @@
 <?php
 /**
- * Comment Type.
+ * Category Type.
  */
 
 namespace App\Form;
 
 
-use App\Entity\Comment;
+use App\Entity\Category;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -14,9 +14,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class CommentType.
+ * Class Category Type.
  */
-class CommentType extends AbstractType
+class CategoryType extends AbstractType
 {
     /**
      * Builds the form.
@@ -33,22 +33,15 @@ class CommentType extends AbstractType
     {
 
         $builder->add(
-            'CommentContent',
+            'CategoryName',
             TextType::class,
             [
-                'label' => 'Treść komentarza',
+                'label' => 'Nazwa nowej kategorii',
                 'required' => true,
                 'attr' => ['max_length' => 150],
             ]
         );
 
-        $builder->add(
-            'announcement',
-            HiddenType::class,
-            [
-                'data'=>$options['id']
-            ]
-        );
 
 
 
@@ -64,7 +57,7 @@ class CommentType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Comment::class, 'id'=>0]);
+        $resolver->setDefaults(['data_class' => Category::class, 'id'=>0]);
         $resolver->addAllowedTypes('id',['int']);
     }
 
@@ -78,7 +71,7 @@ class CommentType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'comment';
+        return 'category';
     }
 }
 

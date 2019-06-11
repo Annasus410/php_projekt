@@ -176,7 +176,7 @@ class Announcement
     /**
      * @return Collection|Category[]
      */
-    public function getCategories(): Collection
+    public function getCategories()
     {
         return $this->categories;
     }

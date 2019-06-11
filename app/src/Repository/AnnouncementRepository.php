@@ -69,4 +69,18 @@ class AnnouncementRepository extends ServiceEntityRepository
         $this->_em->flush($announcement);
     }
 
+    /**
+     * Delete record.
+     *
+     * @param \App\Entity\Announcement  $announcement Announcement entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(Announcement $announcement): void
+    {
+        $this->_em->remove($announcement);
+        $this->_em->flush($announcement);
+    }
+
 }

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Dodaj nową kategorie!'|trans }}
+{% endblock %}
+
+{% block body %}
+
+
+    {{ form_start(form, { method: 'POST', action: url('category_new') }) }}
+    {{ form_widget(form) }}
+    <div class="form-group row float-sm-right">
+        <input type="submit" value="{{ 'Dodaj kategorię'|trans }}" class="btn btn-primary"/>
+    </div>
+    <div class="form-group row float-sm-left">
+        <a class="btn btn-primary" href="{{ url('all_categories') }}" role="button">
+            {{ 'Powrót do listy'|trans }}
+        </a>
+
+    </div>
+    {{ form_end(form) }}
+{% endblock %}

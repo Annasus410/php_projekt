@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if page_title_param is defined %}{{ page_title|trans(page_title_param) }}{% else %}{{ page_title|trans }}{% endif %}
+{% endblock %}
+
+{% block body %}
+
+    <h1>
+        {% if page_title_param is defined %}{{ page_title|trans(page_title_param) }}{% else %}{{ page_title|trans }}{% endif %}
+    </h1>
+    {{ form_start(form, { method: 'PUT', action: url('category_edit', {'id':category.id}) }) }}
+    {{ form_widget(form) }}
+    <div class="form-group row float-sm-right">
+        <input type="submit" value="{{ 'Edytuj kategorię'|trans }}" class="btn btn-primary"/>
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

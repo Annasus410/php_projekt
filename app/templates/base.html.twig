@@ -3,20 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Welcome!{% endblock %}</title>
+
+
     {% block stylesheets %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-              crossorigin="anonymous">
-        <link rel="stylesheet" href="http://127.0.0.1:8000/css/styles.css">
+              crossorigin="anonymous"/>
+        <link  href="{{ asset('css/style.css') }}" rel="stylesheet"/>
+
     {% endblock %}
 </head>
 <body>
+
+
 <div class="header">
-{#    <a class="btn btn-primary btn-lg" href="home/login" role="button">Zaloguj się</a>#}
-{#    <a class="btn btn-primary btn-lg" href="home/a" role="button">Zarejestruj się</a>#}
+
+    <a class="btn btn-primary" href="{{ url('all_announcement') }}" role="button">
+        {{ 'Główna'|trans }}
+    </a>
+
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        <h2> Witaj
+            {{app.user.login}}
+        </h2>
+
+        <a class="btn btn-primary"  href="{{ url('security_logout') }}" role="button">Moje konto</a>
+        <a class="btn btn-primary"  href="{{ url('security_logout') }}" role="button">Moje ogłoszenia</a>
+        <a class="btn btn-primary"  href="{{ url('security_logout') }}" role="button">Wyloguj się</a>
+
+    {% else %}
+
+        <a class="btn btn-primary"  href="{{ url('security_login') }}">{{ 'Zaloguj się' |trans }}</a>
+
+    {% endif %}
 
 
 </div>
+</br>
+
 
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -40,7 +64,13 @@
     {% endfor %}
     {% block body %}{% endblock %}
 </div>
+{#{% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}#}
 
+{#    <div>#}
+{#        <a href="{{ url('logout') }}">{{ 'Wyloguj sie'|trans }}</a>#}
+{#    </div>#}
+
+{#{% endif %}#}
 
 <blockquote class="blockquote">
 </blockquote>

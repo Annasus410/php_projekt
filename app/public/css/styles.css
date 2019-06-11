@@ -1,8 +1,6 @@
-
 h2 {
-    color: deeppink;
+    color: #AA3333;
 }
-
 .mb-0 {
     padding: 36px 470px;
     margin: 1em auto;
@@ -24,3 +22,6 @@ h2 {
     margin: 25px 100px 75px 100px;
 }
 
+div {
+    margin: 25px 100px 75px 100px;
+}

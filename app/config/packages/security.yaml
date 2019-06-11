@@ -29,7 +29,7 @@ security:
 
             logout:
                 path: security_logout
-                target: task_index
+                target: home
 
             switch_user: false
             logout_on_user_change: true
@@ -47,5 +47,6 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        - { path: ^/home, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: ^/, roles: ROLE_USER}

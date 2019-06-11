@@ -90,6 +90,11 @@ class User implements UserInterface
      */
     private $roles = [];
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Comment", mappedBy="User", cascade={"persist", "remove"})
+     */
+    private $comment;
+
 
     public function __construct()
     {
@@ -263,5 +268,22 @@ class User implements UserInterface
     public function getUsername(): string
     {
         return (string) $this->Login;
+    }
+
+    public function getComment(): ?Comment
+    {
+        return $this->comment;
+    }
+
+    public function setComment(Comment $comment): self
+    {
+        $this->comment = $comment;
+
+        // set the owning side of the relation if necessary
+        if ($this !== $comment->getUser()) {
+            $comment->setUser($this);
+        }
+
+        return $this;
     }
 }

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ogłoszenia.pl{% endblock %}
+
+{% block body %}
+    </br>
+    <hr>
+    </br>
+    <h1>{{ 'Opinie o naszym serwisie: '|trans }}</h1>
+    {% if pagination is defined and pagination|length %}
+
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+
+                <th>{{ knp_pagination_sortable(pagination, 'Treść'|trans, 'o.content') }}</th>
+                <
+            </tr>
+            </thead>
+            <tbody>
+            {% for opinion in pagination %}
+
+                <tr>
+
+                    <td>{{ opinion.content }}</td>
+
+                    {#                    <td>{{ item.accepted}}</td>#}
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="navigation text-center">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+
+    {% else %}
+        <p>
+            {{ 'Brak opinii'|trans }}
+        </p>
+    {% endif %}
+
+{% endblock %}
+
+
