@@ -1,22 +1,20 @@
 <?php
 /**
- * Opinion Type.
+ * Photo type.
  */
 
 namespace App\Form;
 
-
-use App\Entity\Opinion;
+use App\Entity\Photo;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class Opinion Type.
+ * Class PhotoType.
  */
-class OpinionType extends AbstractType
+class PhotoType extends AbstractType
 {
     /**
      * Builds the form.
@@ -31,23 +29,14 @@ class OpinionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-
         $builder->add(
-            'Content',
-            TextType::class,
+            'file',
+            FileType::class,
             [
-                'label' => 'Nowa opinia',
+                'label' => 'label.photo',
                 'required' => true,
-                'attr' => ['max_length' => 150],
             ]
         );
-
-
-
-
-
-
-
     }
 
     /**
@@ -57,8 +46,7 @@ class OpinionType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Opinion::class, 'id'=>0]);
-        $resolver->addAllowedTypes('id',['int']);
+        $resolver->setDefaults(['data_class' => Photo::class]);
     }
 
     /**
@@ -71,7 +59,6 @@ class OpinionType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'opinion';
+        return 'photo';
     }
 }
-

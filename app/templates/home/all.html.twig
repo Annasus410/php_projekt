@@ -3,18 +3,11 @@
 {% block title %}Ogłoszenia.pl{% endblock %}
 
 {% block body %}
-    <a class="btn btn-primary"  href="{{ url('announcement_new') }}">{{ 'Dodaj ogłoszenie' |trans }}</a>
-    {% if  is_granted('ROLE_ADMIN') %}
-    <a class="btn btn-primary"  href="{{ url('all_categories') }}">{{ 'Zarządzaj kategoriami' |trans }}</a>
-        <a class="btn btn-primary"  href="{{ url('all_categories' ) }}">{{ 'Zarządzaj użytkownikami' |trans }}</a>
-
-    {% endif %}
-
-    </br>
-    <hr>
-    </br>
+    <div class="all">
 
     <h1>{{ 'Lista ogłoszeń'|trans }}</h1>
+    <a class="btn btn-primary"  href="{{ url('announcement_new') }}">{{ 'Dodaj ogłoszenie' |trans }}</a>
+    </div>
     {% if pagination is defined and pagination|length %}
 
 
@@ -28,11 +21,14 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                {% if  is_granted('ROLE_ADMIN') %}
+                    <th>{{ knp_pagination_sortable(pagination, 'Status'|trans, 'a.accepted') }}</th>
+                {% endif %}
                 <th>{{ knp_pagination_sortable(pagination, 'Tytuł'|trans, 'a.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Treść'|trans, 'a.createdAt') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Kategoria'|trans, 'a.categories') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'Data dodania'|trans, 'a.createdAt') }}</th>
-{#                <th>{{ knp_pagination_sortable(pagination, 'Daodane przez: '|trans, 'a.user') }}</th>#}
+                <th>{{ knp_pagination_sortable(pagination, 'Daodane przez: '|trans, 'a.getUser().login') }}</th>
                  {% if is_granted('ROLE_USER') or  is_granted('ROLE_ADMIN') %}
                 <th>{{ 'Jedno ogłoszenie'|trans }}</th>
                      {% endif %}
@@ -42,12 +38,21 @@
             {% for announcement in pagination %}
 
                 <tr>
-
+                    {% if  is_granted('ROLE_ADMIN') %}
+                        <td>{{ announcement.accepted == 1 ? "tak" : "nie"}}
+                        {% if announcement.accepted == 0 %}
+                            <a href="{{ url('accept_announcement', {id:announcement.id}) }}" title="{{ 'action.view'|trans }}">
+                            </br>
+                                {{ 'Zaakceptuj'|trans }}
+                            </a>
+                            {% endif %}
+                        </td>
+                    {% endif %}
                     <td>{{ announcement.title }}</td>
                     <td>{{ announcement.content }}</td>
                     <td> {{ announcement.getCategory().categoryName }} </td>
                     <td> {{ announcement.createdAt|date('Y-m-d') }} </td>
-{#                    <td> {{ announcement.user }} </td>#}
+                    <td> {{ announcement.getUser().login }} </td>
                     {#                    <td>{{ item.accepted}}</td>#}
                     {% if is_granted('ROLE_USER') or  is_granted('ROLE_ADMIN') %}
                     <td>

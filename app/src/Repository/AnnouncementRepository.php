@@ -38,7 +38,7 @@ class AnnouncementRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('a.CreatedAt', 'DESC');
+            ->orderBy('a.Accepted', 'ASC')->orderBy('a.CreatedAt', 'DESC');
     }
 
     /**
@@ -83,4 +83,38 @@ class AnnouncementRepository extends ServiceEntityRepository
         $this->_em->flush($announcement);
     }
 
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function findByUserId($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.User = :val')
+            ->setParameter('val', $id)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function findAccepted()
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.Accepted = 1')
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 }
+
+
+

@@ -35,7 +35,20 @@ class CommentRepository extends ServiceEntityRepository
         $this->_em->flush($comment);
     }
 
-
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function findByUserId($id)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.User = :val')
+            ->setParameter('val', $id)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Comment[] Returns an array of Comment objects
     //  */

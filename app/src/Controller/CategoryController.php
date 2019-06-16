@@ -79,6 +79,51 @@ class CategoryController extends Controller
         );
     }
 
+
+    /**
+     * Delete action.
+     *
+     * @param Request $request
+     * @param Category $category
+     * @param CategoryRepository $repository
+     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     * @Route(
+     *     "category/{id}/delete",
+     *     methods={"GET", "DELETE"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="category_delete",
+     * )
+     */
+    public function delete(Request $request, Category $category, CategoryRepository $repository): Response
+    {
+        $form = $this->createForm(CategoryType::class, $category, ['method' => 'DELETE']);
+        $form->handleRequest($request);
+
+        if ($request->isMethod('DELETE') && !$form->isSubmitted()) {
+            $form->submit($request->request->get($form->getName()));
+        }
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository->delete($category);
+            $this->addFlash('success', 'Kategoria zostało usunięta');
+
+            return $this->redirectToRoute('all_categories');
+        }
+
+        return $this->render(
+            'category/user_delete.html.twig',
+            [
+                'form' => $form->createView(),
+                'category' => $category,
+                'page_title' => 'Potwierdź skasowanie kategorii',
+
+            ]
+        );
+    }
+
     /**
      * Edit action.
      *
@@ -123,50 +168,5 @@ class CategoryController extends Controller
         );
     }
 
-
-    /**
-     * Delete action.
-     *
-     * @param Request $request
-     * @param Category $category
-     * @param CategoryRepository $repository
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
-     *
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     * @Route(
-     *     "category/{id}/delete",
-     *     methods={"GET", "DELETE"},
-     *     requirements={"id": "[1-9]\d*"},
-     *     name="category_delete",
-     * )
-     */
-    public function delete(Request $request, Category $category, CategoryRepository $repository): Response
-    {
-        $form = $this->createForm(CategoryType::class, $category, ['method' => 'DELETE']);
-        $form->handleRequest($request);
-
-        if ($request->isMethod('DELETE') && !$form->isSubmitted()) {
-            $form->submit($request->request->get($form->getName()));
-        }
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $repository->delete($category);
-            $this->addFlash('success', 'Kategoria zostało usunięta');
-
-            return $this->redirectToRoute('all_categories');
-        }
-
-        return $this->render(
-            'category/delete.html.twig',
-            [
-                'form' => $form->createView(),
-                'category' => $category,
-                'page_title' => 'Potwierdź skasowanie kategorii',
-
-            ]
-        );
-    }
-    
 
 }

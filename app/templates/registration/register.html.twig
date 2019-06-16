@@ -1,0 +1,14 @@
+
+
+{% block body %}
+
+{% include 'default/_form.html.twig' with {
+    page_title: 'Zarejestruj się',
+    attr: {
+        method: 'POST',
+        action: url('user_register')
+    },
+    back_to_list_path: 'security_login',
+} %}
+
+{% endblock %}

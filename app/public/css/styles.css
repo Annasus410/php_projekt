@@ -1,5 +1,8 @@
-h2 {
-    color: #AA3333;
+.all {
+    float: left;
+}
+.right{
+    float: right;
 }
 .mb-0 {
     padding: 36px 470px;
@@ -18,10 +21,9 @@ h2 {
     padding: 26px 66px;
 }
 
-.header {
-    margin: 25px 100px 75px 100px;
-}
+
 
 div {
-    margin: 25px 100px 75px 100px;
+    margin: 25px 100px 25px 100px;
 }
+

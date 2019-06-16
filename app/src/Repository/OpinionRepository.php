@@ -19,6 +19,37 @@ class OpinionRepository extends ServiceEntityRepository
         parent::__construct($registry, Opinion::class);
     }
 
+    /**
+     * * Save record.
+     *
+     * @param Opinion $opinion
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+
+
+
+    public function save(Opinion $opinion): void
+    {
+        $this->_em->persist($opinion);
+        $this->_em->flush($opinion);
+    }
+
+
+    /**
+     * Delete record.
+     *
+     * @param Opinion $opinion
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(Opinion $opinion): void
+    {
+        $this->_em->remove($opinion);
+        $this->_em->flush($opinion);
+    }
+
+
     // /**
     //  * @return Opinion[] Returns an array of Opinion objects
     //  */

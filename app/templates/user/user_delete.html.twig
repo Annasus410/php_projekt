@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if page_title_param is defined %}{{ page_title|trans(page_title_param) }}{% else %}{{ page_title|trans }}{% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% endblock %}
+{% block body %}
+{#    <style>#}
+{#        .form-group:not(.float-sm-right){#}
+{#            display:none;#}
+{#        }#}
+{#    </style>#}
+    <div class="delete_from">
+        <h1>
+            {% if page_title_param is defined %}{{ page_title|trans(page_title_param) }}{% else %}{{ page_title|trans }}{% endif %}
+        </h1>
+        {{ form_start(form, { method: 'DELETE', action: url('user_delete', {'id':user.id}) }) }}
+        {{ form_widget(form) }}
+        <div class="form-group row float-sm-right">
+            <input type="submit" value="{{ 'Skasuj użytkownika'|trans }}" class="btn btn-primary"/>
+        </div>
+
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

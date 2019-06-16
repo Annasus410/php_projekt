@@ -3,10 +3,19 @@
 {% block title %}Ogłoszenia.pl{% endblock %}
 
 {% block body %}
-    </br>
-    <hr>
-    </br>
+
+
     <h1>{{ 'Opinie o naszym serwisie: '|trans }}</h1>
+    <div class="all">
+        {% if is_granted('ROLE_USER') or  is_granted('ROLE_ADMIN') %}
+            <a class="btn btn-primary"  href="{{ url('opinion_new') }}">{{ 'Dodaj opinie' |trans }}</a>
+        {% endif %}
+    </div>
+    </br>
+    </br>
+    </br>
+
+
     {% if pagination is defined and pagination|length %}
 
 
@@ -15,24 +24,20 @@
         </div>
 
 
-
-
         <table class="table table-striped">
-            <thead>
-            <tr>
 
-                <th>{{ knp_pagination_sortable(pagination, 'Treść'|trans, 'o.content') }}</th>
-                <
-            </tr>
-            </thead>
             <tbody>
             {% for opinion in pagination %}
 
                 <tr>
 
                     <td>{{ opinion.content }}</td>
+                    {% if  is_granted('ROLE_ADMIN') %}
+                    <td>  <a  href="{{ url('opinion_delete', {'id':opinion.id})  }}" >
+                            {{ 'Skasuj'|trans }}
+                        </a></td>
+                    {% endif %}
 
-                    {#                    <td>{{ item.accepted}}</td>#}
 
                 </tr>
             {% endfor %}

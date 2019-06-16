@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ogłoszenia.pl{% endblock %}
+
+{% block body %}
+    <div class="all">
+
+        <h1>{{ 'Moje konto:'|trans }}</h1>
+
+    </div>
+
+
+
+
+
+
+        <table class="table table-striped">
+            <th>{{ 'Id' }}</th>
+            <th>{{'Login' }}</th>
+            <th>{{'Login' }}</th>
+            <tbody>
+
+
+                <tr>
+
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.login }}</td>
+                    <td>{{ user.getUserData().name}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+
+
+
+        {% endblock %}
+
+

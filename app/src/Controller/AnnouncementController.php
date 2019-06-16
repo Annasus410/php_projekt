@@ -6,6 +6,7 @@ use App\Entity\Announcement;
 use App\Entity\User;
 use App\Form\AnnouncementType;
 use App\Repository\AnnouncementRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -135,7 +136,7 @@ class AnnouncementController extends Controller
         }
 
         return $this->render(
-            'home/delete.html.twig',
+            'home/user_delete.html.twig',
             [
                 'form' => $form->createView(),
                 'announcement' => $announcement,
@@ -143,6 +144,61 @@ class AnnouncementController extends Controller
 
             ]
         );
+    }
+    /**
+     * * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param \App\Repository\AnnouncementRepository      $announcementRepository Repository
+     * @param \Knp\Component\Pager\PaginatorInterface   $paginator  Paginator
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     *
+     * @Route("/home/user/announcements", name="user_announcements")
+     */
+
+    public function userAnnouncements(Request $request, AnnouncementRepository $announcementRepository, PaginatorInterface $paginator): Response
+
+    {
+        $pagination = $paginator->paginate(
+            $announcementRepository->findByUserId($this->getUser()->getId()),
+            $request->query->getInt('page', 1),
+            Announcement::NUMBER_OF_ITEMS
+        );
+
+        return $this->render(
+            'home/all.html.twig',
+            ['pagination' => $pagination]
+
+        );
+    }
+    /**
+     * Accept action.
+     *
+     * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param \App\Entity\Announcement                          $announcement       Announcement entity
+     * @param \App\Repository\AnnouncementRepository            $repository Announcement repository
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     *
+     * @Route(
+     *     "home/{id}/accept",
+     *     methods={"GET"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="accept_announcement",
+     * )
+     */
+    public function accept(Request $request, Announcement $announcement, AnnouncementRepository $repository): Response
+    {
+
+            $announcement->setAccepted(1);
+            $repository->save($announcement);
+
+            $this->addFlash('success', 'Ogłoszenie zostało zaakceptowane');
+
+            return $this->redirectToRoute('all_announcement');
+
     }
 
 }

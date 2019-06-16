@@ -18,7 +18,7 @@ class Announcement
      *
      * @constant int NUMBER_OF_ITEMS
      */
-    const NUMBER_OF_ITEMS = 2;
+    const NUMBER_OF_ITEMS = 5;
 
     /**
      * @ORM\Id()

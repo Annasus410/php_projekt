@@ -44,11 +44,21 @@ class HomeController extends Controller
     public function allAnnouncements(Request $request, AnnouncementRepository $announcementRepository, PaginatorInterface $paginator): Response
 
     {
-        $pagination = $paginator->paginate(
-            $announcementRepository->queryAll(),
-            $request->query->getInt('page', 1),
-            Announcement::NUMBER_OF_ITEMS
-        );
+        if(!empty($this->getUser()) && in_array("ROLE_ADMIN", $this->getUser()->getRoles())){
+
+            $pagination = $paginator->paginate(
+                $announcementRepository->queryAll(),
+                $request->query->getInt('page', 1),
+                Announcement::NUMBER_OF_ITEMS
+            );
+        } else{
+            $pagination = $paginator->paginate(
+                $announcementRepository->findAccepted(),
+                $request->query->getInt('page', 1),
+                Announcement::NUMBER_OF_ITEMS
+            );
+
+        }
 
         return $this->render(
             'home/all.html.twig',
@@ -118,7 +128,6 @@ class HomeController extends Controller
             $currentAnnouncement = $this->getDoctrine()->getRepository(Announcement::class)->find($currentAnnouncementId);
             $comment->setAnnouncement($currentAnnouncement);
 
-//            $currentUser = $this->getDoctrine()->getRepository(User::class)->find(1);
             $comment->setUser($this->getUser());
             $repository->save($comment);
 
@@ -129,6 +138,31 @@ class HomeController extends Controller
         return $this->render(
             'home/add_comment.html.twig',
             ['form' => $form->createView()]
+        );
+    }
+    /**
+     * * @param \Symfony\Component\HttpFoundation\Request $request    HTTP request
+     * @param \App\Repository\CommentRepository     $commentRepository Repository
+     * @param \Knp\Component\Pager\PaginatorInterface   $paginator  Paginator
+     *
+     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     *
+     * @Route("/home/user/comments", name="user_comments")
+     */
+
+    public function userAnnouncements(Request $request, CommentRepository $commentRepository, PaginatorInterface $paginator): Response
+
+    {
+        $pagination = $paginator->paginate(
+            $commentRepository->findByUserId($this->getUser()->getId()),
+            $request->query->getInt('page', 1),
+            Comment::NUMBER_OF_ITEMS
+        );
+
+        return $this->render(
+            'home/one.html.twig',
+            ['pagination' => $pagination]
+
         );
     }
 

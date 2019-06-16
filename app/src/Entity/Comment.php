@@ -35,7 +35,7 @@ class Comment
     private $announcement;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="comment", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $User;
@@ -88,12 +88,13 @@ class Comment
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getUser()
+
     {
         return $this->User;
     }
 
-    public function setUser(User $User): self
+    public function setUser($User): self
     {
         $this->User = $User;
 
