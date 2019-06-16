@@ -8,6 +8,7 @@ use App\Entity\User;
 use App\Form\AnnouncementType;
 use App\Form\CommentType;
 use App\Form\RegistrationType;
+use App\Form\UserType;
 use App\Repository\AnnouncementRepository;
 use App\Repository\CommentRepository;
 use App\Repository\UserRepository;
@@ -96,7 +97,7 @@ class UserController extends Controller
          */
         public function delete(Request $request, User $user, UserRepository $repository): Response
         {
-        $form = $this->createForm(RegistrationType::class, $user, ['method' => 'DELETE']);
+        $form = $this->createForm(UserType::class, $user, ['method' => 'DELETE']);
             $form->handleRequest($request);
 
             if ($request->isMethod('DELETE') && !$form->isSubmitted()) {

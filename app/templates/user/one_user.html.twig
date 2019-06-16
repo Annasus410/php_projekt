@@ -17,7 +17,11 @@
         <table class="table table-striped">
             <th>{{ 'Id' }}</th>
             <th>{{'Login' }}</th>
-            <th>{{'Login' }}</th>
+            <th>{{'Imię' }}</th>
+            <th>{{'Nazwisko' }}</th>
+            <th>{{'mail' }}</th>
+            <th>{{'Numer telefonu' }}</th>
+            <th>{{'Miasto' }}</th>
             <tbody>
 
 
@@ -26,12 +30,21 @@
                     <td>{{ user.id }}</td>
                     <td>{{ user.login }}</td>
                     <td>{{ user.getUserData().name}}</td>
+                    <td>{{ user.getUserData().lastname}}</td>
+                    <td>{{ user.getUserData().mail}}</td>
+                    <td>{{ user.getUserData().phonenumber}}</td>
+                    <td>{{ user.getUserData().city}}</td>
                 </tr>
 
             </tbody>
         </table>
 
-
+<dd>{% if user.id == user.id  %}
+        <a class="btn btn-primary" href="{{ url('one_user', {'id':user.id})  }}" role="button">
+            {{ 'Zmień hasło'|trans }}
+        </a>
+    {% endif %}
+</dd>
 
 
         {% endblock %}

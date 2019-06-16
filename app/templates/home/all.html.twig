@@ -52,8 +52,10 @@
                     <td>{{ announcement.content }}</td>
                     <td> {{ announcement.getCategory().categoryName }} </td>
                     <td> {{ announcement.createdAt|date('Y-m-d') }} </td>
-                    <td> {{ announcement.getUser().login }} </td>
-                    {#                    <td>{{ item.accepted}}</td>#}
+                    <td>   <a href="{{ url('one_user', {id:announcement.getUser().id}) }}" title="{{ 'action.view'|trans }}">
+                            {{ announcement.getUser().login }} </a>
+                    </td>
+
                     {% if is_granted('ROLE_USER') or  is_granted('ROLE_ADMIN') %}
                     <td>
                         <a href="{{ url('one_announcement', {id:announcement.id}) }}" title="{{ 'action.view'|trans }}">
