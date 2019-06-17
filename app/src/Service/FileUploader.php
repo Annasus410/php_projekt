@@ -60,28 +60,4 @@ class FileUploader
     {
         return $this->targetDirectory;
     }
-
-    /**
-     * Post load.
-     *
-     * @param \Doctrine\ORM\Event\LifecycleEventArgs $args Event args
-     *
-     * @throws \Exception
-     */
-    public function postLoad(LifecycleEventArgs $args)
-    {
-        $entity = $args->getEntity();
-
-        if (!$entity instanceof Photo) {
-            return;
-        }
-
-        if ($fileName = $entity->getFile()) {
-            $entity->setFile(
-                new File(
-                    $this->uploaderService->getTargetDirectory().'/'.$fileName
-                )
-            );
-        }
-    }
 }

@@ -33,7 +33,7 @@ class PhotoType extends AbstractType
             'file',
             FileType::class,
             [
-                'label' => 'label.photo',
+                'label' => 'Wybeirz zdjęcie',
                 'required' => true,
             ]
         );

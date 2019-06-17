@@ -14,34 +14,9 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Class PhotoUploadListener.
- * @property  filesystem
  */
 class PhotoUploadListener
 {
-
-    /**
-     * Post load.
-     *
-     * @param \Doctrine\ORM\Event\LifecycleEventArgs $args Event args
-     *
-     * @throws \Exception
-     */
-    public function postLoad(LifecycleEventArgs $args)
-    {
-        $entity = $args->getEntity();
-
-        if (!$entity instanceof Photo) {
-            return;
-        }
-
-        if ($fileName = $entity->getFile()) {
-            $entity->setFile(
-                new File(
-                    $this->uploaderService->getTargetDirectory().'/'.$fileName
-                )
-            );
-        }
-    }
     /**
      * Uploader service.
      *
@@ -68,10 +43,9 @@ class PhotoUploadListener
      */
     public function prePersist(LifecycleEventArgs $args): void
     {
+        $entity = $args->getEntity();
 
-//        $entity = $args->getEntity();
-//
-//        $this->uploadFile($entity);
+        $this->uploadFile($entity);
     }
 
     /**
@@ -83,9 +57,9 @@ class PhotoUploadListener
      */
     public function preUpdate(PreUpdateEventArgs $args): void
     {
-//        $entity = $args->getEntity();
-//
-//        $this->uploadFile($entity);
+        $entity = $args->getEntity();
+
+        $this->uploadFile($entity);
     }
 
     /**
@@ -107,33 +81,4 @@ class PhotoUploadListener
             $entity->setFile($filename);
         }
     }
-
-    /**
-     * Pre remove.
-     *
-     * @param \Doctrine\ORM\Event\LifecycleEventArgs $args
-     */
-    public function preRemove(LifecycleEventArgs $args)
-    {
-//        $entity = $args->getEntity();
-//
-//        $this->removeFile($entity);
-    }
-    /**
-     * Remove file from disk.
-     *
-     * @param \App\Entity\Photo $entity Photo entity
-     */
-    private function removeFile($entity): void
-    {
-        if (!$entity instanceof Photo) {
-            return;
-        }
-
-        $file = $entity->getFile();
-        if ($file instanceof File) {
-//            $this->filesystem->remove($file->getPathname());
-        }
-    }
-
 }
