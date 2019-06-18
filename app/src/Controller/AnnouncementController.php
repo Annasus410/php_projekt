@@ -27,6 +27,7 @@ class AnnouncementController extends Controller
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *
+     *
      * @Route(
      *     "announcement/add",
      *     methods={"GET", "POST"},
@@ -68,6 +69,8 @@ class AnnouncementController extends Controller
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *
+     *
+     *
      * @Route(
      *     "home/{id}/edit",
      *     methods={"GET", "PUT"},
@@ -84,7 +87,7 @@ class AnnouncementController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $repository->save($announcement);
 
-            $this->addFlash('success', 'Ogłoszenie zostało ');
+            $this->addFlash('success', 'Ogłoszenie zostało zedytowane ');
 
             return $this->redirectToRoute('all_announcement');
         }

@@ -59,7 +59,7 @@ class UserDataType extends AbstractType
             'Mail',
             EmailType::class,
             [
-                'label' => 'Nazwisko',
+                'label' => 'mail',
                 'required' => true,
                 'attr' => ['max_length' => 64],
             ]
@@ -74,15 +74,7 @@ class UserDataType extends AbstractType
                 'attr' => ['max_length' => 64],
             ]
         );
-        $builder->add(
-            'PhoneNumber',
-            NumberType::class,
-            [
-                'label' => 'Numer telefonu',
-                'required' => true,
-                'attr' => ['max_length' => 64],
-            ]
-        );
+
 
         $builder->add(
             'City',
@@ -94,7 +86,13 @@ class UserDataType extends AbstractType
             ]
         );
 
-
+//        $builder->add(
+//            'user',
+//            HiddenType::class,
+//            [
+//                'data'=>$options['id']
+//            ]
+//        );
 
     }
 

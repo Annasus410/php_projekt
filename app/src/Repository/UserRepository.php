@@ -39,7 +39,21 @@ class UserRepository extends ServiceEntityRepository
         $this->_em->remove($user);
         $this->_em->flush($user);
     }
+    public function save(User $user)
+    {
+        $this->_em->persist($user);
+        $this->_em->flush($user);
+    }
 
+    public function findByUserId($id)
+    {
+
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.id = :val')
+            ->setParameter('val', $id)
+            ->orderBy('c.id', 'ASC')
+            ->getQuery()->getOneOrNullResult();
+    }
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

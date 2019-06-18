@@ -33,7 +33,7 @@ class UserData
     private $Mail;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=45)
      */
     private $PhoneNumber;
 

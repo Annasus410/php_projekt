@@ -69,7 +69,9 @@ class HomeController extends Controller
 
     /**
      *
-     * View action.
+     * OneAmmouncement action.
+     *
+     *
      * @Route(
      *  "/home/{id}",
      *   name="one_announcement",

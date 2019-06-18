@@ -19,6 +19,12 @@ class UserDataRepository extends ServiceEntityRepository
         parent::__construct($registry, UserData::class);
     }
 
+    public function save(UserData $userdata)
+    {
+        $this->_em->persist($userdata);
+        $this->_em->flush($userdata);
+    }
+
     // /**
     //  * @return UserData[] Returns an array of UserData objects
     //  */

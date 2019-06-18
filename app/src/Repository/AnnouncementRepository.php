@@ -96,8 +96,7 @@ class AnnouncementRepository extends ServiceEntityRepository
             ->setParameter('val', $id)
             ->orderBy('c.id', 'ASC')
             ->getQuery()
-            ->getResult()
-        ;
+            ->getResult();
     }
 
 

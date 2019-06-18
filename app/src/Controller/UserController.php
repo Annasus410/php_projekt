@@ -2,16 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\Announcement;
-use App\Entity\Comment;
 use App\Entity\User;
-use App\Form\AnnouncementType;
-use App\Form\CommentType;
-use App\Form\RegistrationType;
 use App\Form\UserType;
-use App\Repository\AnnouncementRepository;
-use App\Repository\CommentRepository;
+use App\Form\RegistrationType;
 use App\Repository\UserRepository;
+use App\Repository\CommentRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -146,6 +141,50 @@ class UserController extends Controller
                 ]
             );
         }
+
+    /**
+     * @param Request $request
+     * @param \App\Controller\User $user
+     * @param \App\Controller\UserRepository $repository
+     * @return Response
+     *
+     *
+     *
+     *
+     *
+     * @Route(
+     *     "user/{id}/edit",
+     *     methods={"GET", "PUT"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="edit_user",
+     * )
+     *
+     */
+    public function edit(Request $request, User $user, UserRepository $repository): Response
+{
+
+    $form = $this->createForm(UserType::class, $user, ['method' => 'PUT']);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        $repository->save($user);
+
+        $this->addFlash('success', 'Dane zostały zedytowane');
+
+        return $this->redirectToRoute('one_user');
+    }
+
+    return $this->render(
+        'user/edit.html.twig',
+        [
+            'form' => $form->createView(),
+            'user' => $user,
+            'page_title' => 'Edycja danych',
+
+        ]
+    );
+}
+
 
 //    /**
 //     * @param Request $request
