@@ -30,7 +30,7 @@ class RegistrationType extends AbstractType
             ->add('login',
                 TextType::class,
                 [
-                    'label' => 'login',
+                    'label' => 'Login',
                     'required' => true,
                 ]
             )
@@ -41,8 +41,8 @@ class RegistrationType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'first_options'  => ['label' => 'hasło'],
-                'second_options' => ['label' => 'powtórz hasło'],
+                'first_options'  => ['label' => 'Hasło'],
+                'second_options' => ['label' => 'Powtórz hasło'],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Proszę wpisać hasło',

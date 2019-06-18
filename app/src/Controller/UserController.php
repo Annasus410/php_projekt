@@ -55,26 +55,51 @@ class UserController extends Controller
      * @return Response
      *
      * @Route(
-     *  "/user",
+     *  "/user/{id}",
      *   name="one_user",
      *  requirements={"id": "[1-9]\d*"},
      * )
      *
      */
-    public function oneUser(Request $request, UserRepository $userRepository)
+    public function oneUser(User $user)
     {
-
-
 
 
             return $this->render(
                 'user/one_user.html.twig',
                 [
-                    'user' => $this->getUser()
+                    'user' => $user
                 ]
 
             );
         }
+
+    /**
+     * @param Request $request
+     * @param UserRepository $userRepository
+     * @param int $id
+     * @return Response
+     *
+     * @Route(
+     *  "/user",
+     *   name="account_user",
+     *  requirements={"id": "[1-9]\d*"},
+     * )
+     *
+     */
+    public function accountUser()
+    {
+
+
+        return $this->render(
+            'user/one_user.html.twig',
+            [
+                'user' => $this->getUser()
+            ]
+
+        );
+    }
+
 
         /**
          * Delete action.

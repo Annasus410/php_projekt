@@ -125,6 +125,7 @@ class HomeController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setCreatedAt(new\DateTime());
+            $comment->setUser($this->getUser());
             $currentAnnouncement = $this->getDoctrine()->getRepository(Announcement::class)->find($currentAnnouncementId);
             $comment->setAnnouncement($currentAnnouncement);
 

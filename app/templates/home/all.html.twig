@@ -31,6 +31,7 @@
                 <th>{{ knp_pagination_sortable(pagination, 'Daodane przez: '|trans, 'a.getUser().login') }}</th>
                  {% if is_granted('ROLE_USER') or  is_granted('ROLE_ADMIN') %}
                 <th>{{ 'Jedno ogłoszenie'|trans }}</th>
+                     <th>{{ 'Dodaj zdjęcie'|trans }}</th>
                      {% endif %}
             </tr>
             </thead>
@@ -52,8 +53,8 @@
                     <td>{{ announcement.content }}</td>
                     <td> {{ announcement.getCategory().categoryName }} </td>
                     <td> {{ announcement.createdAt|date('Y-m-d') }} </td>
-                    <td>   <a href="{{ url('one_user', {id:announcement.getUser().id}) }}" title="{{ 'action.view'|trans }}">
-                            {{ announcement.getUser().login }} </a>
+                    <td>   <a href="{{ url('one_user', {'id': announcement.user.id}) }}" title="{{ 'action.view'|trans }}">
+                            {{ announcement.user.login }} </a>
                     </td>
 
                     {% if is_granted('ROLE_USER') or  is_granted('ROLE_ADMIN') %}
@@ -62,6 +63,11 @@
                             {{ 'Pokaż'|trans }}
                         </a>
                     </td>
+                        <td>
+                            <a href="{{ url('photo_new', {id:announcement.id}) }}" title="{{ 'action.view'|trans }}">
+                                {{ 'Dodaj zdjecie'|trans }}
+                            </a>
+                        </td>
                     {% endif %}
 
                 </tr>

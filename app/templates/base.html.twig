@@ -32,7 +32,9 @@
                 </li>
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('one_user') }}" role="button">{{ 'Moje konto'}}</a>
+                      <a class="nav-link" href="{{ url('account_user')}}" title="{{ 'action.view'|trans }}">
+                             {{ 'Moje konto'}}</a>
+
                 </li>
                 <li class="nav-item">
                     <a class="nav-link"  href="{{ url('user_announcements') }}" role="button">{{ 'Moje ogłoszenia'}}</a>
@@ -41,13 +43,14 @@
 
                     <li class="nav-item">
 
-                    <a class="nav-link" href="{{ url('all_opinion') }}" role="button">{{ 'Zobacz opinie o stronie'}} </a>
                     </li>
                     {% endif %}
                     {% if  is_granted('ROLE_ADMIN') %}
                         <a class="nav-link"  href="{{ url('all_categories') }}">{{ 'Zarządzaj kategoriami' |trans }}</a>
                         <a class="nav-link" href="{{ url('all_users') }}">{{ 'Zarządzaj użytkownikami' |trans }}</a>
                         <a class="nav-link" href="{{ url('all_opinion') }}" role="button">{{ 'Zobacz/Usuń opinie o stronie'}} </a>
+                        {% else %}
+                            <a class="nav-link" href="{{ url('all_opinion') }}" role="button">{{ 'Zobacz opinie o stronie'}} </a>
 
 
                     {% endif %}

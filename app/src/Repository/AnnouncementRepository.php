@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Announcement;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Bridge\Doctrine\RegistryInterface;
@@ -112,6 +113,25 @@ class AnnouncementRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
             ;
+    }
+
+    /**
+     * Query announcements by author.
+     *
+     * @param \App\Entity\User|null $user User entity
+     *
+     * @return \Doctrine\ORM\QueryBuilder Query builder
+     */
+    public function queryByAuthor(User $user = null): QueryBuilder
+    {
+        $queryBuilder = $this->queryAll();
+
+        if (!is_null($user)) {
+            $queryBuilder->andWhere('a.user = :user')
+                ->setParameter('user', $user);
+        }
+
+        return $queryBuilder;
     }
 
 }
