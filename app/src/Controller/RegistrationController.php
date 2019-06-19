@@ -76,7 +76,7 @@ class RegistrationController extends AbstractController
      *  * @Route("/register/finish/{id}", name="user_finish_register")
      */
 
-    public function registerUserData(Request $request, UserDataRepository $repository, UserRepository $userRepository): Response
+    public function registerUserData(Request $request, UserRepository $userRepository): Response
     {
 
 
@@ -86,10 +86,6 @@ class RegistrationController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()) {
 
-//            var_dump($userRepository->findByUserId($this->getUser()->getId()));
-//            die;
-
-//            $userdata->setUser($userRepository->findByUserId($request->get('id')));
             $userRepository->save($userRepository->findByUserId($request->get('id'))->setUserData($userdata));
 
 

@@ -44,7 +44,10 @@
             {{ 'Zmień hasło'|trans }}
         </a>
         <a class="btn btn-primary" href="{{ url('edit_user', {'id':user.id})  }}" role="button">
-            {{ 'Edytuj dane'|trans }}
+            {{ 'Edytuj login'|trans }}
+        </a>
+        <a class="btn btn-primary" href="{{ url('edit_user_data', {'id':user.id})  }}" role="button">
+            {{ 'Edytuj dane '|trans }}
         </a>
     {% endif %}
 </dd>

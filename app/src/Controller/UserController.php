@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Form\RegistrationType;
 use App\Repository\UserRepository;
+use App\Repository\UserDataRepository;
 use App\Repository\CommentRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -171,7 +172,7 @@ class UserController extends Controller
 
         $this->addFlash('success', 'Dane zostały zedytowane');
 
-        return $this->redirectToRoute('one_user');
+        return $this->redirectToRoute('account_user');
     }
 
     return $this->render(
@@ -179,35 +180,12 @@ class UserController extends Controller
         [
             'form' => $form->createView(),
             'user' => $user,
-            'page_title' => 'Edycja danych',
+            'page_title' => 'Edycja loginu',
 
         ]
     );
 }
 
-
-//    /**
-//     * @param Request $request
-//     * @param UserRepository $userRepository
-//     *
-//     * @return Response
-//     *
-//     * * @Route("/user", name="all_users")
-//     *
-//     */
-//
-//    public function allUsers(UserRepository $userRepository): Response
-//
-//    {
-//
-//
-//        return $this->render(
-//            'user/all_users.html.twig',
-//            [
-//                'controller_name' => 'UserController',
-//                'users' => $userRepository->findAll()]
-//        );
-//    }
 
 
 }
