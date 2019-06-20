@@ -21,6 +21,7 @@
             <th>{{ 'Id' }}</th>
             <th>{{'Login' }}</th>
             <th>{{ 'Usuń użytkownika' }}</th>
+            <th>{{ 'Pokaż dane użytkownika' }}</th>
             <tbody>
             {% for user in pagination %}
 
@@ -29,6 +30,9 @@
                     <td>{{ user.login }}</td>
                     <td>   <a  href="{{ url('user_delete', {'id':user.id})  }}" role="button">
                             {{ 'Usuń'|trans }}
+                        </a> </td>
+                    <td>   <a  href="{{ url('one_user', {'id':user.id})  }}" role="button">
+                            {{ 'Pokaż'|trans }}
                         </a> </td>
 
                 </tr>

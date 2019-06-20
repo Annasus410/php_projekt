@@ -53,7 +53,7 @@ class PhotoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $photo->setAnnouncement($this->getAnnouncement());
+            $photo->setAnnouncement();
             $repository->save($photo);
             $this->addFlash('success', 'message.created_successfully');
 
@@ -65,4 +65,6 @@ class PhotoController extends AbstractController
             ['form' => $form->createView()]
         );
     }
+
+
 }

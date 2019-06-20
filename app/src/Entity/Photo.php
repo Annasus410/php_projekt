@@ -72,7 +72,9 @@ private $file;
     }
 
 
-
+    /**
+     * @return Announcement|null
+     */
     public function getAnnouncement(): ?Announcement
     {
         return $this->announcement;
