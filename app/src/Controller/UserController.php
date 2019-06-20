@@ -141,7 +141,7 @@ class UserController extends Controller
             $repository->delete($userdata);
             $this->addFlash('success', 'Użytkownik usunięty');
 
-            return $this->redirectToRoute('all_users');
+            return $this->redirectToRoute('account');
         }
 
         return $this->render(
@@ -184,7 +184,7 @@ class UserController extends Controller
 
             $this->addFlash('success', 'Dane zostały zedytowane');
 
-            return $this->redirectToRoute('account_user');
+            return $this->redirectToRoute('all_announcement');
         }
 
         return $this->render(
