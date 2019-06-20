@@ -1,11 +1,15 @@
 <?php
 namespace App\Controller;
+
 use App\Entity\User;
 use App\Entity\UserData;
+use App\Form\ChangePasswordType;
+use App\Form\Model\ChangePassword;
 use App\Form\RegistrationType;
 use App\Form\UserDataType;
 use App\Repository\UserDataRepository;
 use App\Repository\UserRepository;
+use Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -100,5 +104,39 @@ class RegistrationController extends AbstractController
         );
     }
 
+    /**
 
+     * @param Request $request
+     * @param User $user
+     * @param UserRepository $repository
+     * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param $user
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|Response
+     *
+     * * @Route(
+     *      "/change_password/",
+     *      name="user_password",
+     *      methods={"GET", "POST"},
+     * )
+     */
+    public function changePassword(Request $request, UserRepository $repository, UserPasswordEncoderInterface $passwordEncoder )
+    {
+        $user = $this->getUser();
+        $changePassword = new ChangePassword();
+        $form = $this->createForm(ChangePasswordType::class, $changePassword, [ 'method' => 'POST' ]);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $password = $passwordEncoder->encodePassword($user, $changePassword->getPassword());
+            $user->setPassword($password);
+            $repository->save($user);
+            $this->addFlash('success', 'Password changed.');
+            return $this->redirectToRoute('all_announcement');
+        }
+        return $this->render(
+            'registration/change.html.twig',
+            [
+                'form' => $form->createView(),
+            ]
+        );
+    }
 }

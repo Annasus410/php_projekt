@@ -112,14 +112,13 @@ class UserController extends Controller
      * Delete action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
-     * @param \App\Entity\User $user User entity
+     * @param UserData $userdata
      * @param \App\Repository\UserRepository $repository User repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
-     *
      * @Route(
      *     "user/{id}/delete",
      *     methods={"GET", "DELETE"},
@@ -199,44 +198,44 @@ class UserController extends Controller
     }
 
 
-//    /**
-//     * @param Request $request
-//     * @param UserData $userdata
-//     * @param UserDataRepository $repository
-//     * @return Response
-//     *
-//     *
-//     * @Route(
-//     *     "user/{id}/editdata",
-//     *     methods={"GET", "PUT"},
-//     *     requirements={"id": "[1-9]\d*"},
-//     *     name="edit_user_data",
-//     * )
-//     *
-//     */
-//    public function editdata(Request $request, UserData $userdata, UserDataRepository $repository): Response
-//    {
-//
-//        $form = $this->createForm(UserDataType::class, $userdata, ['method' => 'PUT']);
-//        $form->handleRequest($request);
-//
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $repository->save($userdata);
-//
-//            $this->addFlash('success', 'Dane zostały zedytowane');
-//
-//            return $this->redirectToRoute('account_user');
-//        }
-//
-//        return $this->render(
-//            'user/edit_user_data.html.twig',
-//            [
-//                'form' => $form->createView(),
-//                'userdata' => $userdata,
-//                'page_title' => 'Edycja danych',
-//
-//            ]
-//        );
+    /**
+     * @param Request $request
+     * @param UserData $userdata
+     * @param UserDataRepository $repository
+     * @return Response
+     *
+     *
+     * @Route(
+     *     "user/{id}/editdata",
+     *     methods={"GET", "PUT"},
+     *     requirements={"id": "[1-9]\d*"},
+     *     name="edit_user_data",
+     * )
+     *
+     */
+    public function editdata(Request $request, UserData $userdata, UserDataRepository $repository): Response
+    {
 
-//    }
+        $form = $this->createForm(UserDataType::class, $userdata, ['method' => 'PUT']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $repository->save($userdata);
+
+            $this->addFlash('success', 'Dane zostały zedytowane');
+
+            return $this->redirectToRoute('account_user');
+        }
+
+        return $this->render(
+            'user/edit_user_data.html.twig',
+            [
+                'form' => $form->createView(),
+                'userdata' => $userdata,
+                'page_title' => 'Edycja danych',
+
+            ]
+        );
+
+    }
 }
