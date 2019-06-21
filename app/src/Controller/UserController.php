@@ -183,7 +183,7 @@ class UserController extends Controller
 
             $this->addFlash('success', 'Dane zostały zedytowane');
 
-            return $this->redirectToRoute('all_announcement');
+            return $this->redirectToRoute('account_user');
         }
 
         return $this->render(
@@ -213,7 +213,7 @@ class UserController extends Controller
      * )
      *
      */
-    public function editdata(Request $request, UserData $userdata, UserDataRepository $repository): Response
+    public function editdata(Request $request, UserData $userdata, UserDataRepository $repository, User $user): Response
     {
 
         $form = $this->createForm(UserDataType::class, $userdata, ['method' => 'PUT']);
@@ -227,11 +227,12 @@ class UserController extends Controller
             return $this->redirectToRoute('account_user');
         }
 
+
         return $this->render(
             'user/edit_user_data.html.twig',
             [
                 'form' => $form->createView(),
-                'userdata' => $userdata,
+                'user' => $user,
                 'page_title' => 'Edycja danych',
 
             ]

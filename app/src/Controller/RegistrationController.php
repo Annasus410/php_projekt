@@ -129,7 +129,7 @@ class RegistrationController extends AbstractController
             $password = $passwordEncoder->encodePassword($user, $changePassword->getPassword());
             $user->setPassword($password);
             $repository->save($user);
-            $this->addFlash('success', 'Password changed.');
+            $this->addFlash('success', 'Hasło zostało zmienione');
             return $this->redirectToRoute('all_announcement');
         }
         return $this->render(
